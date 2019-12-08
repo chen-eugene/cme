@@ -8,6 +8,7 @@ import Introduce from './pages/Introduce'
 import Corp from './pages/corp'
 import Group from './pages/group'
 import Contact from './pages/contact'
+import NewsDetail from './pages/news/detail'
 
 export default new Router({
     routes: [
@@ -35,6 +36,10 @@ export default new Router({
             path: '/contact',
             name: 'Contact',
             component: Contact
+        }, {
+            path: '/news/detail/:id',
+            name: 'NewsDetail',
+            component: NewsDetail
         }
     ]
 })

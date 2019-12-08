@@ -4,7 +4,7 @@
             新闻中心
         </div>
         <div class="news-wrapper">
-            <div class="news clearfix" v-for="(item, index) in newsList" :key="index">
+            <div class="news clearfix" v-for="(item, index) in newsList" :key="index" @click="viewDetail(index)">
                 <span class="title">{{ item.title }}</span>
                 <span class="date">{{ item.date }}</span>
             </div>
@@ -19,10 +19,10 @@
             return {
                 newsList: [
                     {
-                        title: '【企业新闻专题】 保护生态，拥抱环保从我们做起',
+                        title: '【中标喜讯】',
                         date: '2019-12-04 12:31:10'
                     }, {
-                        title: '【企业新闻专题】 保护生态，拥抱环保从我们做起',
+                        title: '【智能诊断二期项目 - 中标喜讯】',
                         date: '2019-12-04 12:31:10'
                     }, {
                         title: '【企业新闻专题】 保护生态，拥抱环保从我们做起',
@@ -50,6 +50,12 @@
                         date: '2019-12-04 12:31:10'
                     }
                 ]
+            }
+        },
+
+        methods: {
+            viewDetail (index) {
+                this.$router.push(`/news/detail/${index}`)
             }
         }
     }

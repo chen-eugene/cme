@@ -60,6 +60,7 @@
                 background-color: #F1F1F1;
                 cursor: pointer;
                 box-sizing: border-box;
+                text-align: center;
 
                 & + .tab-item {
                     margin-top: 3px;
