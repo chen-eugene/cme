@@ -1,22 +1,31 @@
 <template>
     <div class="news">
-        <div class="header">
-            新闻中心
-        </div>
-        <div class="news-wrapper">
-            <div class="news clearfix" v-for="(item, index) in newsList" :key="index" @click="viewDetail(index)">
-                <span class="title">{{ item.title }}</span>
-                <span class="date">{{ item.date }}</span>
-            </div>
-        </div>
+        <sub-header :tabs="navigation.tabs" @selected="selected"></sub-header>
+        <router-view></router-view>
+<!--        <div class="news-wrapper">-->
+<!--            <div class="news clearfix" v-for="(item, index) in newsList" :key="index" @click="viewDetail(index)">-->
+<!--                <span class="title">{{ item.title }}</span>-->
+<!--                <span class="date">{{ item.date }}</span>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </template>
+
+
 <script>
+    import SubHeader from '../../components/SubHeader'
+
     export default {
         name: 'news',
-
-        data () {
+        components: {
+            SubHeader
+        },
+        data() {
             return {
+                navigation: {
+                    tabs: ['综合资讯', '领导讲话', '营销信息'],
+                    routes: ['/news/composite', '/news/marketing', '/news/speech'],
+                },
                 newsList: [
                     {
                         title: '【中标喜讯】',
@@ -52,9 +61,11 @@
                 ]
             }
         },
-
         methods: {
-            viewDetail (index) {
+            selected(index) {
+                this.$router.push(this.navigation.routes[index])
+            },
+            viewDetail(index) {
                 this.$router.push(`/news/detail/${index}`)
             }
         }
@@ -64,44 +75,5 @@
     .news {
         overflow: hidden;
 
-        .header {
-            margin-left: 30px;
-            margin-right: 30px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            background-color: #1575be;
-            color: #FFFFFF;
-            font-size: 16px;
-            border-radius: 0px 0px 15px 15px;
-        }
-
-        .news-wrapper {
-            padding: 15px 50px;
-            margin-top: 50px;
-
-            .news {
-                height: 40px;
-                line-height: 40px;
-                cursor: pointer;
-
-                &:hover {
-                    .title {
-                        text-decoration: underline;
-                    }
-                }
-
-                .title {
-                    float: left;
-                    font-size: 14px;
-                }
-
-                .date {
-                    float: right;
-                    font-size: 12px;
-                    color: #666666;
-                }
-            }
-        }
     }
 </style>

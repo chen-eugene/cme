@@ -6,7 +6,8 @@
             </div>
 
             <div class="menu-list clearfix">
-                <div class="menu" :class="{ 'active': index === active }" v-for="(item, index) in menuList" :key="index" @click="switchMenu(item)">
+                <div class="menu" :class="{ 'active': index === active }" v-for="(item, index) in menuList" :key="index"
+                     @click="switchMenu(item)">
                     {{ item.title }}
                 </div>
             </div>
@@ -17,7 +18,7 @@
     export default {
         name: 'cme-header',
 
-        data () {
+        data() {
             return {
                 menuList: [
                     {
@@ -47,36 +48,36 @@
                     }
                 ],
                 active: -1,
-                logo: 'http://prod-wj-lingfen.oss-cn-beijing.aliyuncs.com/others/logo.png'
+                logo: 'http://www.cme-cq.com/Templet/default/images/logo.jpg'
             }
         },
 
         watch: {
-            '$route' (to) {
+            '$route'(to) {
                 // eslint-disable-next-line no-console
-                if (to.path === '' || to.path === '/') return this.active = -1
+                if (to.path === '' || to.path === '/') return this.active = -1;
                 for (var i = 0; i < this.menuList.length; i++) {
-                    if (this.menuList[i].route.indexOf(to.path) > -1) {
-                        this.active = i
+                    if (to.path.indexOf(this.menuList[i].route) !== -1) {
+                        this.active = i;
                         break
                     }
                 }
             }
         },
 
-        created () {
-            var path = this.$route.path
-            if (path === '' || path === '/') return this.active = -1
+        created() {
+            let path = this.$route.path;
+            if (path === '' || path === '/') return this.active = -1;
             for (var i = 0; i < this.menuList.length; i++) {
-                if (this.menuList[i].route.indexOf(path) > -1) {
-                    this.active = i
+                if (path.indexOf(this.menuList[i].route) !== -1) {
+                    this.active = i;
                     break
                 }
             }
         },
 
         methods: {
-            switchMenu (item) {
+            switchMenu(item) {
                 this.$router.push(item.route)
             }
         }
@@ -85,28 +86,29 @@
 <style lang="less" scoped>
     .cme-header {
         background-color: #FFFFFF;
-        height: 50px;
-        // border-bottom: 5px solid #1575be;
-        min-width: 1190px;
+        height: 70px;
+        border-bottom: 5px solid #1575be;
+        min-width: 980px;
 
         .header-wrapper {
-            width: 1190px;
+            width: 980px;
             margin: 0 auto;
-            height: 50px;
-            line-height: 50px;
+            height: 70px;
+            line-height: 70px;
 
-            .logo {
-                float: left;
-                font-size: 18px;
+            > .logo {
+                font-size: 16px;
                 font-weight: 600;
-                width: 180px;
-                height: 40px;
-                margin-top: 5px;
+                width: 240px;
+                height: 100%;
                 cursor: pointer;
+                display: inline-block;
+                background-color: #1575be;
+                line-height: unset;
 
                 img {
-                    width: 100%;
-                    height: 100%;
+                    width: 240px;
+                    height: 65px;
                 }
             }
 
@@ -116,6 +118,8 @@
                 .menu {
                     float: left;
                     padding: 0 10px;
+                    font-size: 16px;
+                    font-weight: 500;
 
                     &:hover {
                         background-color: #1575be;
