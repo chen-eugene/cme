@@ -1,6 +1,6 @@
 <template>
     <div class="introduce">
-        <sub-header :tabs="navigation.tabs" @selected="selected">
+        <sub-header :tabs="navigation.tabs" @selected="selected" primary="企业介绍">
         </sub-header>
         <div class="content">
             <router-view></router-view>
@@ -18,9 +18,10 @@
         data() {
             return {
                 navigation: {
-                    tabs: ['企业简介', '组织机构', '团队风采', '企业荣誉', '技术创新', '合作伙伴', '宣传片'],
+                    tabs: ['企业简介', '组织架构', '团队风采', '荣誉资质', '技术创新', '合作伙伴', '宣传片'],
                     routes: ['/introduce/introduction', '/introduce/framework', '',
-                        '/introduce/honor', '/introduce/technology', '/introduce/companion'],
+                        '/introduce/honor', '/introduce/technology', '/introduce/companion', ''
+                    ],
                 }
             }
         },

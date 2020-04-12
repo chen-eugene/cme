@@ -3,7 +3,7 @@
         <img src="http://prod-wj-lingfen.oss-cn-beijing.aliyuncs.com/others/picture3.png" alt=""/>
         <div class="nav">
             <div class="home">首页</div>
-            <div class="primary">产品与服务</div>
+            <div class="primary">{{primary}}</div>
             <div class="secondary">{{tabs[active]}}</div>
         </div>
         <div class="tab-wrap">
@@ -34,7 +34,8 @@
                 default: function () {
                     return ['高端设备制造', '电子信息设备', '交通运输设备', '智能制造', '工程技术服务']
                 }
-            }
+            },
+            primary: String
         },
         methods: {
             switchTab(index) {

@@ -1,6 +1,6 @@
 <template>
     <div id="framework">
-        <img src="http://www.cme-cq.com/files/2017-09/20170914110114.jpg" alt=""/>
+        <img src="../../../assets/framework.jpeg" alt=""/>
     </div>
 </template>
 
@@ -19,6 +19,7 @@
 
         img {
             margin: 40px auto 0;
+            width: 960px;
         }
 
     }

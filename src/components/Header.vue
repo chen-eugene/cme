@@ -33,16 +33,20 @@
                     }, {
                         title: '行业解决方案',
                         route: '/case'
-                    }, {
-                        title: '招标信息',
-                        route: '/info'
-                    }, {
-                        title: '企业文化',
-                        route: '/culture'
-                    }, {
-                        title: '人力资源',
+                    }
+                    // , {
+                    //     title: '招标信息',
+                    //     route: '/info'
+                    // }
+                    // , {
+                    //     title: '企业文化',
+                    //     route: '/culture'
+                    // }
+                    , {
+                        title: '招聘信息',
                         route: '/hr'
-                    }, {
+                    }
+                    , {
                         title: '联系方式',
                         route: '/contact'
                     }

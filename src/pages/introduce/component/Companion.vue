@@ -1,59 +1,60 @@
 <template>
     <div id="companion">
-        <div class="logos">
-            <img v-for="(img,index) in companions" :src="img" :key="index" alt="">
+        <div v-for="item in list" :key="item.resourceId" class="item">
+            <img class="coverImage" :src="item.resourceLink" alt=""/>
+            <div class="name">{{item.resourceName}}</div>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from '../../../assets/axios'
+
     export default {
         name: "Companion",
         data() {
             return {
-                companions: [
-                    'http://www.cme-cq.com/files/2014-09/2014092612351991809.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612372343622.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612374374214.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612380511029.jpg',
-                    'http://www.cme-cq.com/files/2017-09/20170914102533.png',
-                    'http://www.cme-cq.com/files/2014-09/2014092612384854126.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612401967712.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612403678043.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612405387757.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612411412652.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612413170917.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612415184032.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612423582352.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612425540319.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612431080856.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612432738669.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612434413743.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612440649543.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612442534869.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612444223885.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612450012826.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612451819886.jpg',
-                    'http://www.cme-cq.com/files/2014-09/2014092612454041745.jpg']
+                list: []
             }
+        },
+        methods: {
+            async query() {
+                const res = await axios.get(`api/resource/list?categoryId=23`);
+                this.list = res.data
+            },
+        },
+        mounted() {
+            this.query()
         }
     }
 </script>
 
 <style scoped lang="less">
     #companion {
-        margin: 25px 0;
-        width: 100%;
+        .item {
+            margin: 20px;
+            cursor: pointer;
+            position: relative;
+            width: 300px;
+            height: 200px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #e7e7e7;
 
-        .logos {
-            width: 960px;
-            margin: 0 auto;
-
-            img {
-                width: 320px;
-                height: 150px;
+            .coverImage {
+                width: 300px;
+                height: 200px;
             }
-        }
 
+            .name {
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, .5);
+                width: 300px;
+                color: white;
+                text-align: center;
+            }
+
+        }
     }
 </style>

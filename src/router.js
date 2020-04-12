@@ -3,23 +3,19 @@ import Router from 'vue-router'
 
 Vue.use(Router);
 
-import Home from './pages/Home.vue'
+// import Home from './pages/Home.vue'
 import Introduce from './pages/introduce/Introduce'
 import Group from './pages/group'
 import Contact from './pages/contact'
-import NewsDetail from './pages/news/detail'
 
 import News from './pages/news'
-import Composite from './pages/news/components/Composite'
-import Marketing from './pages/news/components/Marketing'
-import Speech from './pages/news/components/Speech'
+import Company from './pages/news/components/Company'
+import NewsProject from './pages/news/components/Project'
+import NewsDetail from './pages/news/detail'
 
 import Product from './pages/product/Product'
-import Equipment from './pages/product/components/Equipment'
-import Electronic from './pages/product/components/Electronic'
-import Intelligent from './pages/product/components/Intelligent'
-import Project from './pages/product/components/Project'
-import Transportation from './pages/product/components/Transportation'
+import OnOff from './pages/product/components/OnOff'
+import Counter from './pages/product/components/Counter'
 
 import Introduction from './pages/introduce/component/Introduction'
 import Framework from './pages/introduce/component/Framework'
@@ -32,8 +28,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'Home',
-            component: Home
+            redirect: 'introduce'
         },
         {
             path: '/news',
@@ -41,23 +36,19 @@ export default new Router({
             component: News,
             children:[
                 {
-                    path: '',
-                    redirect: 'composite'
+                    path: 'company',
+                    name: 'company',
+                    component: Company
                 },
                 {
-                    path: 'composite',
-                    name: 'Composite',
-                    component: Composite
+                    path: 'project',
+                    name: 'project',
+                    component: NewsProject
                 },
                 {
-                    path: 'marketing',
-                    name: 'Marketing',
-                    component: Marketing
-                },
-                {
-                    path: 'speech',
-                    name: 'Speech',
-                    component: Speech
+                    path: 'detail',
+                    name: 'detail',
+                    component: NewsDetail
                 }
             ]
         },
@@ -67,35 +58,15 @@ export default new Router({
             component: Product,
             children: [
                 {
-                    path: '',
-                    redirect: 'equipment'
+                    path: 'onoff',
+                    name: 'onoff',
+                    component: OnOff
                 },
                 {
-                    path: 'equipment',
-                    name: 'Equipment',
-                    component: Equipment
-                },
-                {
-                    path: 'electronic',
-                    name: 'Electronic',
-                    component: Electronic
-                },
-                {
-                    path: 'transportation',
-                    name: 'Transportation',
-                    component: Transportation
-                },
-                {
-                    path: 'intelligent',
-                    name: 'Intelligent',
-                    component: Intelligent
-                },
-                {
-                    path: 'project',
-                    name: 'Project',
-                    component: Project
-                },
-
+                    path: 'counter',
+                    name: 'counter',
+                    component: Counter
+                }
             ]
         },
         {

@@ -1,40 +1,60 @@
 <template>
     <div id="technology">
-        <img src="http://www.cme-cq.com/files/2017-09/20170914100650.jpg" alt=""/>
-        <p>
-            重庆机电集团聚人才成伟业、用创新谋发展，以国际化眼光，瞄准世界先进技术，引领行业进步。集团2000多名工程技术专家人才队伍，以集团国家级企业技术中心，市级企业技术中心、院士专家工作站、博士后科研工作站和“重庆机电欧洲创新中心”，“重庆机床/PTG欧洲机床研发中心”，“康明斯大马力发动机技术研发中心”，“ABB全球变压器设计中心””、特高压实验中心和绝缘制造中心”等全球同步研发体系为平台，通过引进吸收、产学研合作、自主创新打造了重庆机电的核心技术和竞争力，铸就了1个中国名牌产品，6个中国驰名商标和44个重庆市名牌产品,集团拥有授权专利2600余项，是多个行业标准的制定者或参与者。重庆机电集团通过实施“走出去”，在不断汲取发达国家技术资源的同时，全资并购获得3个英国百年品牌，1个世界著名直升机品牌。</p>
-        <p>
-            重庆机电集团坚持实施“做精存量、做强增量、持续创新”的新“321”发展战略，围绕转型升级和提质增效发展，聚焦高端装备制造及系统集成服务、电子信息设备及系统集成服务、交通运输装备及系统集成服务、智能制造及系统集成服务、工程技术服务及推广五大板块，坚持创新驱动，以市场需求为导向，瞄准产业发展方向和制造、工艺、技术、产品等方面的“短板”,
-            产学研用协同，不断提高原始创新、集成创新和引进消化吸收再创新能力，通过技术创新、管理创新、体制创新、机制创新实现转型升级，不断增强重庆机电集团经济活力、控制力、影响力，推动集团产业水平从中低端迈向中高端，步入良性可持续发展轨道。</p>
-        <p>力争到2020年，重庆机电集团技术创新能力显著提升，科技投入达到营业收入的4%以上，全集团新增5个以上国家级技术开发平台，授权专利总数累计达到3000件以上，其中发明专利占比达到5%以上。</p>
+        <div v-for="item in list" :key="item.resourceId" class="item">
+            <img class="coverImage" :src="item.resourceLink" alt=""/>
+            <div class="name">{{item.resourceName}}</div>
+        </div>
     </div>
 </template>
 
 <script>
+    import axios from '../../../assets/axios'
+
     export default {
-        name: "Technology"
+        name: "Technology",
+        data() {
+            return {
+                list: []
+            }
+        },
+        methods: {
+            async query() {
+                const res = await axios.get(`api/resource/list?categoryId=22`);
+                this.list = res.data
+            },
+        },
+        mounted() {
+            this.query()
+        }
     }
 </script>
 
 <style scoped lang="less">
     #technology {
-        padding-bottom: 25px;
-        text-align: center;
+        .item {
+            margin: 20px;
+            cursor: pointer;
+            position: relative;
+            width: 300px;
+            height: 200px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #e7e7e7;
 
-        img {
-            width: 960px;
-            height: 600px;
-            margin-top: 25px;
+            .coverImage {
+                width: 300px;
+                height: 200px;
+            }
+
+            .name {
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, .5);
+                width: 300px;
+                color: white;
+                text-align: center;
+            }
+
         }
-
-        p {
-            font-size: 14px;
-            color: black;
-            line-height: 25px;
-            text-indent: 24px;
-            margin-top: 20px;
-            text-align: left;
-        }
-
     }
 </style>
