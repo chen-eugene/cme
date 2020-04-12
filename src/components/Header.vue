@@ -44,7 +44,7 @@
                     // }
                     , {
                         title: '招聘信息',
-                        route: '/hr'
+                        route: '/employ'
                     }
                     , {
                         title: '联系方式',

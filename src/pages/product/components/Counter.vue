@@ -1,6 +1,6 @@
 <template>
     <div id="counter">
-        <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail">
+        <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
             <img class="coverImage" :src="item.coverImage" alt=""/>
             <div class="name">{{item.articleName}}</div>
         </div>
@@ -38,8 +38,13 @@
                 this.total = res.data.total;
                 this.infos = res.data.row;
             },
-            gotoDetail() {
-                this.$router.push()
+            gotoDetail(article) {
+                this.$router.push({
+                    name: `ProductDetail`,
+                    params: {
+                        articleId: article.articleId
+                    }
+                })
             },
             currentChange(pageNum) {
                 this.queryNews(pageNum)

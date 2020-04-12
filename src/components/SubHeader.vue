@@ -12,7 +12,7 @@
                      :class="{ 'active': index === active }"
                      v-for="(title, index) in tabs"
                      :key="index"
-                     @mouseover="switchTab(index)">
+                     @click="switchTab(index)">
                     {{ title }}
                 </div>
             </div>

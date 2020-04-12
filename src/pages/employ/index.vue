@@ -1,6 +1,6 @@
 <template>
-    <div class="case">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="行业解决方案"></sub-header>
+    <div class="employ">
+        <sub-header :tabs="navigation.tabs" @selected="selected" primary="招聘中心"></sub-header>
         <router-view></router-view>
     </div>
 </template>
@@ -11,7 +11,7 @@
     import axios from '../../assets/axios'
 
     export default {
-        name: 'Case',
+        name: 'Employ',
         components: {
             SubHeader
         },
@@ -29,10 +29,10 @@
                 this.$router.push(this.navigation.routes[index])
             },
             viewDetail(index) {
-                this.$router.push(`/case/detail/${index}`)
+                this.$router.push(`/employ/detail/${index}`)
             },
             async queryKey() {
-                const res = await axios.get('api/category/list?categoryKey=case')
+                const res = await axios.get('api/category/list?categoryKey=employ')
                 for (let i = 0; i < res.data.length; i++) {
                     this.navigation.tabs.push(res.data[i].categoryName)
                     this.navigation.routes.push({
@@ -51,7 +51,7 @@
     }
 </script>
 <style lang="less">
-    .news {
+    .employ {
         overflow: hidden;
 
     }

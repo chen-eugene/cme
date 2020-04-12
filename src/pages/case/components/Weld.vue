@@ -1,12 +1,8 @@
 <template>
-    <div id="composite">
-        <div v-for="item in news" :key="item.articleId" class="item" @click="gotoDetail(item)">
-            <div class="title">
-                {{item.articleName}}
-            </div>
-            <div class="time">
-                {{item.publishTime}}
-            </div>
+    <div id="weld">
+        <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
+            <img class="coverImage" :src="item.coverImage" alt=""/>
+            <div class="name">{{item.articleName}}</div>
         </div>
         <ms-pagination
                 class="pagination"
@@ -21,13 +17,13 @@
     import axios from '../../../assets/axios'
 
     export default {
-        name: "Composite",
+        name: "weld",
         data() {
             return {
                 pageSize: 15,
                 pageNum: 1,
                 total: 1,
-                news: [],
+                infos: [],
                 btnTextOption: {
                     first: '首页',
                     last: '尾页',
@@ -40,11 +36,11 @@
             async queryNews(num) {
                 const res = await axios.get(`api/article/list?subCategoryId=${this.$route.params.categoryId}&pageSize=15&pageNum=${num}`)
                 this.total = res.data.total;
-                this.news = res.data.row;
+                this.infos = res.data.row;
             },
             gotoDetail(article) {
                 this.$router.push({
-                    name: `NewsDetail`,
+                    name: `CaseDetail`,
                     params: {
                         articleId: article.articleId
                     }
@@ -61,25 +57,32 @@
 </script>
 
 <style scoped lang="less">
-    #composite {
-        position: relative;
+    #weld {
         padding-bottom: 60px;
+        position: relative;
 
         .item {
-            margin: 10px 30px;
+            margin: 20px;
             cursor: pointer;
+            position: relative;
+            width: 300px;
+            height: 200px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #e7e7e7;
 
-            div {
-                display: inline-block;
-                font-size: 14px;
+            .coverImage {
+                width: 300px;
+                height: 200px;
+            }
 
-
-                &.time {
-                    float: right;
-                    font-size: 10px;
-                    color: gray;
-                }
-
+            .name {
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(0,0,0,.5);
+                width: 300px;
+                color: white;
+                text-align: center;
             }
 
         }

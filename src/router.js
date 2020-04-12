@@ -13,9 +13,22 @@ import Company from './pages/news/components/Company'
 import NewsProject from './pages/news/components/Project'
 import NewsDetail from './pages/news/detail'
 
+import Case from './pages/case/index'
+import CaseDetail from './pages/case/detail'
+import CaseAuto from './pages/case/components/Auto'
+import CaseExpress from './pages/case/components/Express'
+import CaseInfo from './pages/case/components/Info'
+import CaseWeld from './pages/case/components/Weld'
+
 import Product from './pages/product/Product'
+import ProductDetail from './pages/product/detail'
 import OnOff from './pages/product/components/OnOff'
 import Counter from './pages/product/components/Counter'
+
+import Employ from './pages/employ/index'
+import EmployDetail from './pages/employ/detail'
+import EmployScemploy from './pages/employ/components/Scemploy'
+import EmploySoemploy from './pages/employ/components/Soemploy'
 
 import Introduction from './pages/introduce/component/Introduction'
 import Framework from './pages/introduce/component/Framework'
@@ -34,7 +47,7 @@ export default new Router({
             path: '/news',
             name: 'News',
             component: News,
-            children:[
+            children: [
                 {
                     path: 'company',
                     name: 'company',
@@ -47,7 +60,7 @@ export default new Router({
                 },
                 {
                     path: 'detail',
-                    name: 'detail',
+                    name: 'NewsDetail',
                     component: NewsDetail
                 }
             ]
@@ -66,6 +79,11 @@ export default new Router({
                     path: 'counter',
                     name: 'counter',
                     component: Counter
+                },
+                {
+                    path: 'detail',
+                    name: 'ProductDetail',
+                    component: ProductDetail
                 }
             ]
         },
@@ -97,7 +115,62 @@ export default new Router({
                 name: 'Companion',
                 component: Companion
             },]
-        }, {
+        },
+        {
+            path: '/case',
+            name: 'Case',
+            component: Case,
+            children: [
+                {
+                    path: 'auto',
+                    name: 'auto',
+                    component: CaseAuto
+                },
+                {
+                    path: 'express',
+                    name: 'express',
+                    component: CaseExpress
+                },
+                {
+                    path: 'info',
+                    name: 'info',
+                    component: CaseInfo
+                },
+                {
+                    path: 'weld',
+                    name: 'weld',
+                    component: CaseWeld
+                },
+                {
+                    path: 'detail',
+                    name: 'CaseDetail',
+                    component: CaseDetail
+                }
+            ]
+        },
+        {
+            path: '/employ',
+            name: 'Employ',
+            component: Employ,
+            children: [
+                {
+                    path: 'scemploy',
+                    name: 'scemploy',
+                    component: EmployScemploy
+                },
+                {
+                    path: 'soemploy',
+                    name: 'soemploy',
+                    component: EmploySoemploy
+                },
+                {
+                    path: 'detail',
+                    name: 'EmployDetail',
+                    component: EmployDetail
+                },
+            ]
+        },
+        {
             path: '/hr',
             name: 'Group',
             component: Group

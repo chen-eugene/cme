@@ -44,7 +44,7 @@
             },
             gotoDetail(article) {
                 this.$router.push({
-                    name: `detail`,
+                    name: `NewsDetail`,
                     params: {
                         articleId: article.articleId
                     }

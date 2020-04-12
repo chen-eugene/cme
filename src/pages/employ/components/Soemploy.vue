@@ -1,5 +1,5 @@
 <template>
-    <div id="composite">
+    <div id="soemploy">
         <div v-for="item in news" :key="item.articleId" class="item" @click="gotoDetail(item)">
             <div class="title">
                 {{item.articleName}}
@@ -21,7 +21,7 @@
     import axios from '../../../assets/axios'
 
     export default {
-        name: "Composite",
+        name: "Soemploy",
         data() {
             return {
                 pageSize: 15,
@@ -44,7 +44,7 @@
             },
             gotoDetail(article) {
                 this.$router.push({
-                    name: `NewsDetail`,
+                    name: `EmployDetail`,
                     params: {
                         articleId: article.articleId
                     }
@@ -61,7 +61,7 @@
 </script>
 
 <style scoped lang="less">
-    #composite {
+    #soemploy {
         position: relative;
         padding-bottom: 60px;
 
