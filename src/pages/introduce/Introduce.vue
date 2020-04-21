@@ -22,10 +22,13 @@
             return {
                 header: require('@/assets/header_introduce.png'),
                 navigation: {
-                    tabs: ['企业简介', '组织架构', '团队风采', '荣誉资质', '技术创新', '合作伙伴', '宣传片'],
-                    routes: ['/introduce/introduction', '/introduce/framework', '',
-                        '/introduce/honor', '/introduce/technology', '/introduce/companion', ''
-                    ],
+                    // tabs: ['企业简介', '组织架构', '团队风采', '荣誉资质', '技术创新', '合作伙伴', '宣传片'],
+                    // routes: ['/introduce/introduction', '/introduce/framework', '',
+                    //     '/introduce/honor', '/introduce/technology', '/introduce/companion', ''
+                    // ],
+                    tabs: ['企业简介', '组织架构', '荣誉资质', '技术创新', '合作伙伴'],
+                    routes: ['/introduce/introduction', '/introduce/framework',
+                        '/introduce/honor', '/introduce/technology', '/introduce/companion'],
                 }
             }
         },
