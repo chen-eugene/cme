@@ -6,7 +6,7 @@
         </div>
         <div class="item tel">
             <img src="../../../assets/ic_tel.png" alt=""/>
-            <input class="input" placeholder="贵司联系电话" v-model="reform.contactMoblie">
+            <input class="input" placeholder="贵司联系电话" v-model="reform.contactMobile">
         </div>
         <div class="item tag">
             <img src="../../../assets/ic_mine.png" alt=""/>
@@ -35,7 +35,7 @@
                 reform: {
                     companyName: '',
                     contactUser: '',
-                    contactMoblie: '',
+                    contactMobile: '',
                     content: ''
                 }
             }
@@ -43,26 +43,39 @@
         methods: {
             validate() {
                 if (this.reform.companyName === '') {
-                    alert('姓名不能为空');
+                    alert('贵司名称不能为空');
                     return false
                 } else if (this.reform.contactUser === '') {
-                    alert("姓名不能为空");
+                    alert("联系人不能为空");
                     return false
-                } else if (this.reform.contactMoblie === '') {
-                    alert("姓名不能为空");
+                } else if (this.reform.contactMobile === '') {
+                    alert("联系电话不能为空");
                     return false
                 } else if (this.reform.content === '') {
-                    alert("姓名不能为空");
+                    alert("需求不能为空");
                     return false
                 }
                 return true
             },
             async confirm() {
                 if (this.validate()) {
-                    await axios.post(`api/message/create`, this.reform);
+                    await axios.post(`api/message/create`, Object.assign({}, this.reform, {
+                        _csrf: this.getKey('csrfToken')
+                    }));
                     this.reform = this.$options.data().reform
+                    alert('您的留言我们已经收到，感谢')
                 }
             },
+
+            getKey (cname) {
+                var name = cname + '='
+                var ca = document.cookie.split(';')
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i].trim()
+                    if (c.indexOf(name) === 0) return c.substring(name.length, c.length)
+                }
+            },
+
             reset() {
                 this.reform = this.$options.data().reform
             }
