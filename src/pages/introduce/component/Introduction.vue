@@ -1,6 +1,5 @@
 <template>
     <div id="introduction">
-        <img src="http://www.cme-cq.com/files/2014-12/20141217093138.jpg" alt=""/>
         <div class="text">
             <h3>重庆机电控股（集团）公司简介</h3>
             <p>
@@ -14,12 +13,18 @@
                 公司业务已覆盖智能制造项目咨询与管理、智能工厂整体规划与实施、智能制造项目系统集成与服务、智能装备及产品研发与生产、智能化管理系统开发与运维等，并成功实施多个国家智能制造示范项目，成为西部地区智能制造领域优选供应商。
             </p>
         </div>
+        <img :src="logo" alt=""/>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Introduction"
+        name: "Introduction",
+        data() {
+            return {
+                logo: require('../../../../public/ic_logo.png')
+            }
+        }
     }
 </script>
 
@@ -30,19 +35,23 @@
         width: 100%;
 
         img {
-            width: 267px;
-            height: 500px;
-            margin: 50px 15px 0;
+            width: 400px;
+            /*height: 500px;*/
+            float: right;
+            margin-right: 200px;
+            margin-top: 150px;
         }
 
         .text {
             display: inline-block;
-            width: 540px;
+            width: 450px;
+            margin-left: 100px;
+            margin-top: 60px;
 
             h3 {
                 color: black;
                 font-size: 16px;
-                margin-left: 200px;
+                text-align: center;
             }
 
             p {

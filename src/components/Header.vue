@@ -51,7 +51,7 @@
                     }
                 ],
                 active: -1,
-                logo: 'http://www.cme-cq.com/Templet/default/images/logo.jpg'
+                logo: require('../../public/ic_logo.png')
             }
         },
 
@@ -104,15 +104,12 @@
             > .logo {
                 font-size: 16px;
                 font-weight: 600;
-                width: 240px;
-                height: 100%;
                 cursor: pointer;
                 display: inline-block;
                 line-height: unset;
 
                 img {
-                    width: 240px;
-                    height: 65px;
+                    height: 80px;
                 }
             }
 
