@@ -1,11 +1,9 @@
 <template>
     <div id="honor">
-        <div class="content">
-            <div v-for="item in list" :key="item.resourceId" class="item" @click="gotoDetail(item)">
-                <img class="coverImage" :src="item.resourceLink" alt=""/>
-                <!--                <div class="name">{{item.resourceName}}</div>-->
-            </div>
-        </div>
+        <viewer :images="previewImages">
+            <img class="item" v-for="src in previewImages" :key="src" :src="src">
+        </viewer>
+
     </div>
 </template>
 
@@ -16,22 +14,19 @@
         name: "Honor",
         data() {
             return {
-                list: []
+                list: [],
+                previewImages: []
             }
         },
         methods: {
             async query() {
                 const res = await axios.get(`api/resource/list?categoryId=21`);
-                this.list = res.data
-            },
-            gotoDetail(item) {
-                this.$router.push({
-                    name: `IntroductionDetail`,
-                    params: {
-                        imageUrl: item.resourceLink
-                    }
+                console.dir(res);
+                this.list = res.data;
+                this.list.forEach((item) => {
+                    this.previewImages.push(item.resourceLink);
                 })
-            }
+            },
         },
         mounted() {
             this.query()
@@ -51,20 +46,6 @@
             width: 300px;
             text-align: center;
             display: inline-block;
-
-            .coverImage {
-                width: 300px;
-            }
-
-            .name {
-                position: absolute;
-                bottom: 0;
-                background-color: rgba(0, 0, 0, .5);
-                width: 300px;
-                color: white;
-                text-align: center;
-            }
-
         }
     }
 </style>

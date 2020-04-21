@@ -1,6 +1,6 @@
 <template>
     <div class="cme-footer">
-        <p class="address">地址：重庆市南岸区江溪路6号  电话：023-62770078  Email：yan.zhang@cme-im.com</p>
+        <p class="address">地址：重庆市南岸区江溪路6号 电话：023-62770078 Email：yan.zhang@cme-im.com</p>
     </div>
 </template>
 <script>
@@ -17,7 +17,7 @@
     .cme-footer {
         height: 80px;
         width: 100%;
-        background-color: #595959;
+        background-color: #083C70;
         /*background-color: rgba(8,60,112,1);*/
         padding-top: 126px;
 

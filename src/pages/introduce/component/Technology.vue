@@ -1,9 +1,8 @@
 <template>
     <div id="technology">
-        <div v-for="item in list" :key="item.resourceId" class="item" @click="gotoDetail(item)">
-            <img class="coverImage" :src="item.resourceLink" alt=""/>
-<!--            <div class="name">{{item.resourceName}}</div>-->
-        </div>
+        <viewer :images="previewImages">
+            <img class="item" v-for="src in previewImages" :key="src" :src="src">
+        </viewer>
     </div>
 </template>
 
@@ -14,13 +13,17 @@
         name: "Technology",
         data() {
             return {
-                list: []
+                list: [],
+                previewImages: []
             }
         },
         methods: {
             async query() {
                 const res = await axios.get(`api/resource/list?categoryId=22`);
-                this.list = res.data
+                this.list = res.data;
+                this.list.forEach((item) => {
+                    this.previewImages.push(item.resourceLink);
+                })
             },
             gotoDetail(item) {
                 this.$router.push({

@@ -2,7 +2,9 @@
     <div id="app">
         <c-header></c-header>
         <div class="content">
-            <router-view></router-view>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </div>
         <c-footer id="footer"></c-footer>
     </div>
@@ -53,7 +55,7 @@
     }
 
     .clearfix::after, .clearfix::before {
-        content: 0;
+        content: '';
         display: table;
         clear: both;
     }

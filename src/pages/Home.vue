@@ -7,7 +7,26 @@
         <!--            <div class="swiper-pagination" slot="pagination"></div>-->
         <!--        </swiper>-->
         <div class="slogon">
-            智能制造 引领机电未来
+            <div class="text">
+                智能制造 引领机电未来
+            </div>
+        </div>
+        <div class="introduce">
+            <div class="wrapper">
+                <div class="menu">
+                    <div class="txt title">关于机电</div>
+                    <div class="txt circle company" @click="gotoTarget('company')">公司简介</div>
+                    <div class="txt circle product" @click="gotoTarget('product')">产品服务</div>
+                    <div class="txt circle case" @click="gotoTarget('case')">行业解决方案</div>
+                    <div class="txt more" @click="gotoTarget('company')">了解更多 →</div>
+                </div>
+                <div class="video-container">
+                    <video controls width="450px">
+                        <source src="../assets/deliver.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -18,6 +37,7 @@
 
         data() {
             return {
+                // backgroundUrl: require('../assets/background.png'),
                 swiperOption: {
                     autoplay: 1000,
                     setWrapperSize: true,
@@ -68,6 +88,19 @@
             },
             gotoIntroduce() {
                 this.$router.push('/introduce/introduction')
+            },
+            gotoTarget(target) {
+                switch (target) {
+                    case 'company':
+                        this.$router.push('/introduce');
+                        break;
+                    case 'product':
+                        this.$router.push('/product');
+                        break;
+                    case 'case':
+                        this.$router.push('/case');
+                        break;
+                }
             }
         }
     }
@@ -75,23 +108,100 @@
 <style lang="less" scoped>
     .home {
         width: 100%;
-        height: 665px;
-        background-image: url("../assets/background.png");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        position: relative;
 
         .slogon {
-            width: 400px;
-            height: 60px;
-            font-size: 30px;
-            color: white;
-            font-weight: 600;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-            text-align: center;
-            position: absolute;
-            top: calc(50% - 30px);
-            left: calc(50% - 200px);
+            position: relative;
+            width: 100%;
+            height: 680px;
+            background-size: cover;
+            background-image: url("../assets/background.png");
+
+            .bg {
+                width: 100%;
+            }
+
+            .text {
+                width: 400px;
+                height: 60px;
+                font-size: 30px;
+                color: white;
+                font-weight: 600;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                position: absolute;
+                top: calc(50% - 30px);
+                left: calc(50% - 200px);
+            }
+        }
+
+        .introduce {
+            height: 500px;
+            width: 100%;
+            background: #504E4E;
+            position: relative;
+            /*text-align: center;*/
+
+            .wrapper {
+                display: inline-block;
+                text-align: left;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                .menu {
+                    display: inline-block;
+                    width: 265px;
+
+                    .txt {
+                        color: white;
+                        font-size: 16px;
+
+                        &.title {
+                            font-size: 20px;
+                            margin-bottom: 30px;
+                        }
+                    }
+
+                    .circle {
+                        display: inline-block;
+                        width: 125px;
+                        height: 125px;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.1);
+                        line-height: 125px;
+                        text-align: center;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+
+                        &.product {
+                            margin-left: 15px;
+                            margin-top: 15px;
+                        }
+
+                        &.case {
+                            margin-left: 55px;
+                            margin-top: -15px;
+                        }
+                    }
+
+                    .more {
+                        margin-top: 30px;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .video-container {
+                    display: inline-block;
+                    margin-left: 60px;
+                    background: #083C70;
+                }
+            }
         }
     }
 </style>

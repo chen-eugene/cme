@@ -50,7 +50,7 @@
 <style lang="less">
     .contactus {
         padding: 50px;
-        width: 1200px;
+        width: 100%;
         margin: 50px auto;
         background: #FFFFFF;
 
@@ -105,6 +105,7 @@
                 .input {
                     width: calc(100% - 40px);
                     height: 240px;
+                    resize: none;
                 }
             }
 

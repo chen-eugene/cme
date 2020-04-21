@@ -4,13 +4,13 @@
             <img src="../../../assets/ic_tag.png" alt=""/>
             <input class="input" placeholder="请输入贵司名称" v-model="reform.companyName">
         </div>
-        <div class="item tel">
-            <img src="../../../assets/ic_tel.png" alt=""/>
-            <input class="input" placeholder="贵司联系电话" v-model="reform.contactMobile">
-        </div>
         <div class="item tag">
             <img src="../../../assets/ic_mine.png" alt=""/>
             <input class="input" placeholder="贵司联系人" v-model="reform.contactUser">
+        </div>
+        <div class="item tel">
+            <img src="../../../assets/ic_tel.png" alt=""/>
+            <input class="input" placeholder="贵司联系电话" v-model="reform.contactMobile">
         </div>
         <div class="item msg">
             <img src="../../../assets/ic_msg.png" alt=""/>
@@ -86,7 +86,7 @@
 <style lang="less">
     .leaveword {
         padding: 50px;
-        width: 1200px;
+        width: 100%;
         margin: 50px auto;
         background: #FFFFFF;
 
@@ -162,7 +162,7 @@
                 line-height: 58px;
                 font-size: 16px;
 
-                &.hover {
+                &:hover {
                     cursor: pointer;
                 }
             }
