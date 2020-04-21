@@ -68,11 +68,6 @@ export default new Router({
                     name: 'project',
                     component: NewsProject,
                     meta: {keepAlive: true},
-                },
-                {
-                    path: 'detail',
-                    name: 'NewsDetail',
-                    component: NewsDetail
                 }
             ]
         },
@@ -217,8 +212,9 @@ export default new Router({
                     component: LeaveWord
                 },
             ]
-        }, {
-            path: '/news/detail/:articleId',
+        },
+        {
+            path: '/detail/:articleId',
             name: 'NewsDetail',
             component: NewsDetail
         },

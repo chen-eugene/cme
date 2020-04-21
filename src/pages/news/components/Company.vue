@@ -44,7 +44,7 @@
                 this.news = res.data.row;
             },
             gotoDetail(article) {
-                this.$router.push(`/news/detail/${article.articleId}`);
+                this.$router.push(`/detail/${article.articleId}`);
             },
             currentChange(pageNum) {
                 this.queryNews(pageNum)
