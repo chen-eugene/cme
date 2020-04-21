@@ -60,6 +60,10 @@
 
         .content {
             margin-top: 50px;
+
+            img {
+                max-width: 900px;
+            }
         }
 
     }
