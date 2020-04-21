@@ -1,11 +1,11 @@
 <template>
     <div id="sub-header">
-        <img src="http://prod-wj-lingfen.oss-cn-beijing.aliyuncs.com/others/picture3.png" alt=""/>
-        <div class="nav">
-            <div class="home">首页</div>
-            <div class="primary">{{primary}}</div>
-            <div class="secondary">{{tabs[active]}}</div>
-        </div>
+        <img :src="header" alt=""/>
+<!--        <div class="nav">-->
+<!--            <div class="home">首页</div>-->
+<!--            <div class="primary">{{primary}}</div>-->
+<!--            <div class="secondary">{{tabs[active]}}</div>-->
+<!--        </div>-->
         <div class="tab-wrap">
             <div class="tabs">
                 <div class="tab"
@@ -21,11 +21,12 @@
 </template>
 
 <script>
+
     export default {
         name: "SubHeader",
         data() {
             return {
-                active: 0
+                active: 0,
             }
         },
         props: {
@@ -33,6 +34,12 @@
                 type: Array,
                 default: function () {
                     return ['高端设备制造', '电子信息设备', '交通运输设备', '智能制造', '工程技术服务']
+                }
+            },
+            header: {
+                type: String,
+                default: function () {
+                    return require('@/assets/header_introduce.png')
                 }
             },
             primary: String
@@ -50,10 +57,12 @@
 
     #sub-header {
         width: 100%;
+        background: white;
 
         > img {
             width: 100%;
-            height: 195px;
+            height: 450px;
+            object-fit: cover;
         }
 
         .nav {
@@ -61,7 +70,7 @@
             line-height: 40px;
             margin-left: 15px;
             font-size: 14px;
-            border-bottom: 1px solid #EEEEEE;
+            border-bottom: 1px solid #F5F5F5;
 
             .home {
                 display: inline-block;
@@ -92,33 +101,53 @@
         }
 
         .tab-wrap {
-            margin-top: 10px;
+            text-align: center;
 
             .tabs {
                 height: 80px;
-                background-color: lightgray;
-                margin: 0 15px;
+                background-color: white;
                 box-sizing: border-box;
 
                 .tab {
                     display: inline-block;
-                    width: 110px;
+                    width: 200px;
                     height: 80px;
                     line-height: 80px;
+                    font-family: "微软雅黑";
                     color: black;
-                    font-size: 14px;
+                    font-size: 16px;
                     text-align: center;
-                    border-right: 1px solid white;
+                    border-right: 2px solid #F5F5F5;
+                    position: relative;
+
+                    &:first-child {
+                        border-left: 2px solid #F5F5F5;
+                    }
 
                     &:hover {
                         cursor: pointer;
+                        color: #1575be;
+
+                        &::before {
+                            background-color: #1575be;
+                        }
                     }
 
-                    &.active {
-                        background-color: white;
-                        border-top: 5px solid #1575be;
-                        line-height: 70px;
+                    &.active::before {
+                        background-color: #1575be;
                     }
+
+                    &::before {
+                        display: inline-block;
+                        background-color: #FFFFFF;
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 196px;
+                        height: 4px;
+                    }
+
                 }
             }
 

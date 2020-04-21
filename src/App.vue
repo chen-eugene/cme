@@ -29,20 +29,16 @@
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
         min-height: 100vh;
-        background-color: #F1F1F1;
+        background-color: #F5F5F5;
 
         > .content {
-            width: 980px;
-            margin: 5px auto;
-            background-color: #FFFFFF;
-            min-height: 700px;
-            box-shadow: 1px 1px 10px #ccc;
+            width: 100%;
+            min-height: 665px;
         }
 
         > #footer {
-            width: 980px;
-            max-height: 195px;
-            margin: 5px auto;
+            width: 100%;
+            min-height: 200px;
         }
     }
 

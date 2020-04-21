@@ -1,11 +1,13 @@
 <template>
     <div id="scemploy">
-        <div v-for="item in news" :key="item.articleId" class="item" @click="gotoDetail(item)">
-            <div class="title">
-                {{item.articleName}}
-            </div>
-            <div class="time">
-                {{item.publishTime}}
+        <div class="content">
+            <div v-for="item in news" :key="item.articleId" class="item" @click="gotoDetail(item)">
+                <div class="title">
+                    {{item.articleName}}
+                </div>
+                <div class="time">
+                    {{item.publishTime}}
+                </div>
             </div>
         </div>
         <ms-pagination
@@ -26,7 +28,7 @@
             return {
                 pageSize: 15,
                 pageNum: 1,
-                total: 1,
+                total: 0,
                 news: [],
                 btnTextOption: {
                     first: '首页',
@@ -62,36 +64,39 @@
 
 <style scoped lang="less">
     #scemploy {
-        position: relative;
-        padding-bottom: 60px;
+        text-align: center;
 
-        .item {
-            margin: 10px 30px;
-            cursor: pointer;
+        .content {
+            text-align: left;
+            width: 1026px;
+            margin: 0 auto;
 
-            div {
-                display: inline-block;
-                font-size: 14px;
+            .item {
+                margin: 10px 30px;
+                cursor: pointer;
+
+                div {
+                    display: inline-block;
+                    font-size: 14px;
 
 
-                &.time {
-                    float: right;
-                    font-size: 10px;
-                    color: gray;
+                    &.time {
+                        float: right;
+                        font-size: 10px;
+                        color: gray;
+                    }
+
                 }
 
             }
-
         }
 
         .pagination {
-            /*background: #337ab7;*/
-            /*position: fixed;*/
-            /*float: right;*/
-            position: absolute;
-            bottom: 0;
-            left: 400px
+            display: inline-block;
+            margin-top: 50px;
+            text-align: center;
         }
+
 
     }
 </style>

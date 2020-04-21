@@ -1,7 +1,12 @@
 <template>
     <div id="product">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="产品服务"></sub-header>
-        <router-view></router-view>
+        <sub-header :tabs="navigation.tabs" @selected="selected" primary="产品服务" :header="header"></sub-header>
+        <div class="route-content">
+            <keep-alive>
+                <router-view v-if="$route.meta.keepAlive"></router-view>
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
+        </div>
     </div>
 </template>
 
@@ -16,6 +21,7 @@
         },
         data() {
             return {
+                header: require('@/assets/header_product.png'),
                 navigation: {
                     tabs: [],
                     routes: [],
@@ -53,6 +59,11 @@
 <style scoped lang="less">
     #product {
 
-
+        .route-content{
+            margin: 50px auto;
+            width: calc(100% - 480px);
+            background: white;
+            padding: 50px;
+        }
     }
 </style>

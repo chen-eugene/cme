@@ -2,7 +2,7 @@
     <div id="companion">
         <div v-for="item in list" :key="item.resourceId" class="item">
             <img class="coverImage" :src="item.resourceLink" alt=""/>
-            <div class="name">{{item.resourceName}}</div>
+            <!--            <div class="name">{{item.resourceName}}</div>-->
         </div>
     </div>
 </template>
@@ -31,19 +31,22 @@
 
 <style scoped lang="less">
     #companion {
+        width: 1024px;
+        margin: 0 auto;
+
         .item {
             margin: 20px;
             cursor: pointer;
             position: relative;
             width: 300px;
-            height: 200px;
+            /*height: 200px;*/
             text-align: center;
             display: inline-block;
-            border: 1px solid #e7e7e7;
+            /*border: 1px solid #e7e7e7;*/
 
             .coverImage {
                 width: 300px;
-                height: 200px;
+                /*height: 200px;*/
             }
 
             .name {
@@ -56,5 +59,6 @@
             }
 
         }
+
     }
 </style>

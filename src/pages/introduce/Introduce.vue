@@ -1,9 +1,12 @@
 <template>
     <div class="introduce">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="企业介绍">
-        </sub-header>
+        <sub-header :tabs="navigation.tabs" @selected="selected" primary="企业介绍"
+                    :header="header"></sub-header>
         <div class="content">
-            <router-view></router-view>
+            <keep-alive>
+                <router-view v-if="$route.meta.keepAlive"></router-view>
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
         </div>
     </div>
 </template>
@@ -17,6 +20,7 @@
         },
         data() {
             return {
+                header: require('@/assets/header_introduce.png'),
                 navigation: {
                     tabs: ['企业简介', '组织架构', '团队风采', '荣誉资质', '技术创新', '合作伙伴', '宣传片'],
                     routes: ['/introduce/introduction', '/introduce/framework', '',
@@ -36,35 +40,12 @@
 <style lang="less" scoped>
     .introduce {
         position: relative;
-        /*padding: 15px 30px;*/
-
-        .tabs {
-            width: 120px;
-            position: absolute;
-            left: 30px;
-
-            .tab-item {
-                width: 120px;
-                height: 40px;
-                line-height: 40px;
-                background-color: #F1F1F1;
-                cursor: pointer;
-                box-sizing: border-box;
-                text-align: center;
-
-                & + .tab-item {
-                    margin-top: 3px;
-                }
-
-                &:hover {
-                    box-shadow: 5px 0px 0px inset #1575be;
-                    background-color: #FFFFFF;
-                }
-            }
-        }
 
         .content {
-            padding: 0 15px;
+            margin: 50px auto;
+            width: calc(100% - 480px);
+            background: white;
+            padding: 50px;
         }
     }
 </style>

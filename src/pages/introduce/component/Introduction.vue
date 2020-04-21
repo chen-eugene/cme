@@ -27,6 +27,7 @@
 
     #introduction {
         height: 600px;
+        width: 100%;
 
         img {
             width: 267px;

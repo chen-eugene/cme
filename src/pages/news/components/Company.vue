@@ -8,6 +8,7 @@
                 {{item.publishTime}}
             </div>
         </div>
+
         <ms-pagination
                 class="pagination"
                 :btn-text="btnTextOption"
@@ -26,7 +27,7 @@
             return {
                 pageSize: 15,
                 pageNum: 1,
-                total: 1,
+                total: 0,
                 news: [],
                 btnTextOption: {
                     first: '首页',
@@ -48,7 +49,7 @@
                     params: {
                         articleId: article.articleId
                     }
-                })
+                });
             },
             currentChange(pageNum) {
                 this.queryNews(pageNum)
@@ -62,12 +63,12 @@
 
 <style scoped lang="less">
     #composite {
-        position: relative;
-        padding-bottom: 60px;
+        text-align: center;
 
         .item {
             margin: 10px 30px;
             cursor: pointer;
+            text-align: left;
 
             div {
                 display: inline-block;
@@ -85,12 +86,9 @@
         }
 
         .pagination {
-            /*background: #337ab7;*/
-            /*position: fixed;*/
-            /*float: right;*/
-            position: absolute;
-            bottom: 0;
-            left: 400px
+            display: inline-block;
+            margin-top: 50px;
+            text-align: center;
         }
 
     }

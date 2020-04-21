@@ -1,5 +1,5 @@
 import axios from 'axios'
-import toast from '../components/niu-toast/index'
+// import toast from '../components/niu-toast/index'
 
 const instance = axios.create({
     baseURL: '/',
@@ -11,7 +11,7 @@ instance.interceptors.response.use((response) => {
         return response
     }
 }, (error) => {
-    toast('网络异常，请稍后再试！')
+    // toast('网络异常，请稍后再试！')
     return Promise.reject(error)
 });
 

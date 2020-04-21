@@ -4,7 +4,6 @@
             <div class="logo" @click="$router.push('/')">
                 <img :src="logo" alt="">
             </div>
-
             <div class="menu-list clearfix">
                 <div class="menu" :class="{ 'active': index === active }" v-for="(item, index) in menuList" :key="index"
                      @click="switchMenu(item)">
@@ -90,15 +89,17 @@
 <style lang="less" scoped>
     .cme-header {
         background-color: #FFFFFF;
-        height: 70px;
-        border-bottom: 5px solid #1575be;
-        min-width: 980px;
+        height: 80px;
+        width: 100%;
+        padding-left: 240px;
+        padding-right: 240px;
 
         .header-wrapper {
-            width: 980px;
+            width: 100%;
             margin: 0 auto;
-            height: 70px;
-            line-height: 70px;
+            height: 80px;
+            line-height: 80px;
+            display: inline-block;
 
             > .logo {
                 font-size: 16px;
@@ -107,7 +108,6 @@
                 height: 100%;
                 cursor: pointer;
                 display: inline-block;
-                background-color: #1575be;
                 line-height: unset;
 
                 img {
@@ -118,23 +118,48 @@
 
             .menu-list {
                 float: right;
+                display: inline-block;
+                position: relative;
+                height: 80px;
 
                 .menu {
+                    width: 110px;
+                    height: 80px;
                     float: left;
                     padding: 0 10px;
                     font-size: 16px;
+                    text-align: center;
                     font-weight: 500;
+                    position: relative;
 
-                    &:hover {
-                        background-color: #1575be;
-                        color: #FFFFFF;
+                    &.active {
+                        color: #1575be;
                         cursor: pointer;
                     }
 
-                    &.active {
-                        background-color: #1575be;
-                        color: #FFFFFF;
+                    &:hover {
                         cursor: pointer;
+                        color: #1575be;
+
+                        &::before {
+                            background-color: #1575be;
+                        }
+                    }
+
+                    &.active::before {
+                        background-color: #1575be;
+                    }
+
+                    &::before {
+                        display: inline-block;
+                        background-color: #FFFFFF;
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        width: 110px;
+                        height: 4px;
                     }
                 }
             }

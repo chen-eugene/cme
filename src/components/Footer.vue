@@ -1,9 +1,6 @@
 <template>
     <div class="cme-footer">
-        <p class="company">重庆机电控股(集团)公司</p>
-        <p class="address">地址：重庆市北部新区黄山大道中段60号 邮编：401123 电话：023-63075670 传真：023-63075679 邮箱：office@cme-cq.com</p>
-        <p class="right">2014-2015 © 重庆机电控股（集团）公司 版权所有 渝ICP备12001980号-1</p>
-        <p class="customer-service">技术支持：中国政企网</p>
+        <p class="address">地址：重庆市南岸区江溪路6号  电话：023-62770078  Email：yan.zhang@cme-im.com</p>
     </div>
 </template>
 <script>
@@ -18,11 +15,11 @@
 <style lang="less" scoped>
 
     .cme-footer {
-        height: 195px;
+        height: 80px;
         width: 100%;
-        background-color: white;
-        border-top: 5px solid #1575be;
-        padding-top: 40px;
+        background-color: #595959;
+        /*background-color: rgba(8,60,112,1);*/
+        padding-top: 126px;
 
         * {
             color: darkgray;

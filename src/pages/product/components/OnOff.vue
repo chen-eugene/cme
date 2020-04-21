@@ -1,8 +1,10 @@
 <template>
     <div id="onoff">
-        <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
-            <img class="coverImage" :src="item.coverImage" alt=""/>
-            <div class="name">{{item.articleName}}</div>
+        <div class="content">
+            <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
+                <img class="coverImage" :src="item.coverImage" alt=""/>
+                <div class="name">{{item.articleName}}</div>
+            </div>
         </div>
         <ms-pagination
                 class="pagination"
@@ -22,7 +24,7 @@
             return {
                 pageSize: 15,
                 pageNum: 1,
-                total: 1,
+                total: 0,
                 infos: [],
                 btnTextOption: {
                     first: '首页',
@@ -59,41 +61,45 @@
 <style scoped lang="less">
     #onoff {
         padding-bottom: 60px;
-        position: relative;
+        text-align: center;
 
-        .item {
-            margin: 20px;
-            cursor: pointer;
-            position: relative;
-            width: 300px;
-            height: 200px;
-            text-align: center;
-            display: inline-block;
-            border: 1px solid #e7e7e7;
+        .content {
+            text-align: left;
+            width: 1026px;
+            margin: 0 auto;
 
-            .coverImage {
+            .item {
+                margin: 20px;
+                cursor: pointer;
+                position: relative;
                 width: 300px;
                 height: 200px;
-            }
-
-            .name {
-                position: absolute;
-                bottom: 0;
-                background-color: rgba(0,0,0,.5);
-                width: 300px;
-                color: white;
                 text-align: center;
-            }
+                display: inline-block;
+                border: 1px solid #e7e7e7;
+                box-sizing: content-box;
 
+                .coverImage {
+                    width: 300px;
+                    height: 200px;
+                }
+
+                .name {
+                    position: absolute;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, .5);
+                    width: 300px;
+                    color: white;
+                    text-align: center;
+                }
+
+            }
         }
 
         .pagination {
-            /*background: #337ab7;*/
-            /*position: fixed;*/
-            /*float: right;*/
-            position: absolute;
-            bottom: 0;
-            left: 400px
+            display: inline-block;
+            margin-top: 50px;
+            text-align: center;
         }
 
     }

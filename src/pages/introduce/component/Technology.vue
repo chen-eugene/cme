@@ -1,8 +1,8 @@
 <template>
     <div id="technology">
-        <div v-for="item in list" :key="item.resourceId" class="item">
+        <div v-for="item in list" :key="item.resourceId" class="item" @click="gotoDetail(item)">
             <img class="coverImage" :src="item.resourceLink" alt=""/>
-            <div class="name">{{item.resourceName}}</div>
+<!--            <div class="name">{{item.resourceName}}</div>-->
         </div>
     </div>
 </template>
@@ -22,6 +22,14 @@
                 const res = await axios.get(`api/resource/list?categoryId=22`);
                 this.list = res.data
             },
+            gotoDetail(item) {
+                this.$router.push({
+                    name: `IntroductionDetail`,
+                    params: {
+                        imageUrl: item.resourceLink
+                    }
+                })
+            }
         },
         mounted() {
             this.query()
@@ -31,19 +39,22 @@
 
 <style scoped lang="less">
     #technology {
+        margin: 0 auto;
+        width: 1024px;
+
         .item {
             margin: 20px;
             cursor: pointer;
             position: relative;
             width: 300px;
-            height: 200px;
+            /*height: 200px;*/
             text-align: center;
             display: inline-block;
-            border: 1px solid #e7e7e7;
+            /*border: 1px solid #e7e7e7;*/
 
             .coverImage {
                 width: 300px;
-                height: 200px;
+                /*height: 200px;*/
             }
 
             .name {

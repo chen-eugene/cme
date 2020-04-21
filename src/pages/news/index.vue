@@ -1,7 +1,12 @@
 <template>
     <div class="news">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="新闻中心"></sub-header>
-        <router-view></router-view>
+        <sub-header :tabs="navigation.tabs" @selected="selected" primary="新闻中心" :header="header"></sub-header>
+        <div class="route-content">
+            <keep-alive>
+                <router-view v-if="$route.meta.keepAlive"></router-view>
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
+        </div>
     </div>
 </template>
 
@@ -17,6 +22,7 @@
         },
         data() {
             return {
+                header: require('@/assets/header_news.png'),
                 navigation: {
                     tabs: [],
                     routes: [],
@@ -25,7 +31,7 @@
         },
         methods: {
             selected(index) {
-                console.log('index');
+                console.log('index_backup.vue');
                 this.$router.push(this.navigation.routes[index])
             },
             viewDetail(index) {
@@ -54,5 +60,11 @@
     .news {
         overflow: hidden;
 
+        .route-content {
+            padding: 50px;
+            width: calc(100% - 480px);
+            margin: 50px auto;
+            background: #FFFFFF;
+        }
     }
 </style>
