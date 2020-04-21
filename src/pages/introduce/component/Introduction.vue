@@ -1,7 +1,7 @@
 <template>
     <div id="introduction">
         <div class="text">
-            <h3>重庆机电控股（集团）公司简介</h3>
+            <h3>重庆机电智能制造有限公司简介</h3>
             <p>
                 重庆机电智能制造有限公司是在重庆市政府的支持下，由重庆机电控股（集团）公司于2015年出资创立的智能制造产业化平台企业，注册资本1亿元，营业收入近6亿元。
             </p>
@@ -38,7 +38,7 @@
             width: 400px;
             /*height: 500px;*/
             float: right;
-            margin-right: 200px;
+            margin-right: 100px;
             margin-top: 150px;
         }
 

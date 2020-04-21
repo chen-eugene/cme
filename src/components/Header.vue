@@ -91,15 +91,13 @@
         background-color: #FFFFFF;
         height: 80px;
         width: 100%;
-        padding-left: 240px;
-        padding-right: 240px;
 
         .header-wrapper {
-            width: 100%;
             margin: 0 auto;
+            width: 1190px;
+            min-width: 1190px;
             height: 80px;
             line-height: 80px;
-            display: inline-block;
 
             > .logo {
                 font-size: 16px;

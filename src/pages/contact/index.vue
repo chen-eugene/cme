@@ -59,10 +59,12 @@
 <style scoped lang="less">
     #product {
 
-        .route-content{
-            margin: 50px auto;
-            width: calc(100% - 480px);
-            background: white;
+        .route-content {
+            padding: 30px;
+            width: 1190px;
+            min-width: 1190px;
+            background: #FFFFFF;
+            margin: 30px auto
         }
     }
 </style>

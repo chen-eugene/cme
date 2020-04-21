@@ -61,10 +61,11 @@
         overflow: hidden;
 
         .route-content {
-            padding: 50px;
-            width: calc(100% - 480px);
-            margin: 50px auto;
+            padding: 30px;
+            width: 1190px;
+            min-width: 1190px;
             background: #FFFFFF;
+            margin: 30px auto
         }
     }
 </style>

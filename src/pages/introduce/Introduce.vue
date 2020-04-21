@@ -45,10 +45,11 @@
         position: relative;
 
         .content {
-            margin: 50px auto;
-            width: calc(100% - 480px);
-            background: white;
-            padding: 50px;
+            padding: 30px;
+            width: 1190px;
+            min-width: 1190px;
+            background: #FFFFFF;
+            margin: 30px auto
         }
     }
 </style>

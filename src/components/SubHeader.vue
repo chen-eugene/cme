@@ -101,12 +101,14 @@
         }
 
         .tab-wrap {
-            text-align: center;
+            text-align: left;
 
             .tabs {
+                width: 1190px;
                 height: 80px;
                 background-color: white;
                 box-sizing: border-box;
+                margin: 0 auto;
 
                 .tab {
                     display: inline-block;
