@@ -41,25 +41,23 @@
                 const res = await axios.get('api/category/list?categoryKey=employ')
                 for (let i = 0; i < res.data.length; i++) {
                     this.navigation.tabs.push(res.data[i].categoryName)
-                    this.navigation.routes.push({
-                        name: `${res.data[i].categoryKey}`,
-                        params: {
-                            categoryId: res.data[i].categoryId
-                        }
-                    })
+                    this.navigation.routes.push(`/employ/${res.data[i].categoryKey}/${res.data[i].categoryId}`)
                 }
                 this.selected(0)
             }
         },
         mounted() {
             this.queryKey()
+        },
+        activated() {
+            this.selected(0)
         }
     }
 </script>
 <style lang="less">
     .employ {
         overflow: hidden;
-        
+
         .route-content {
             padding: 30px;
             width: 1190px;

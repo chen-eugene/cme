@@ -40,18 +40,16 @@
                 const res = await axios.get('api/category/list?categoryKey=contact')
                 for (let i = 0; i < res.data.length; i++) {
                     this.navigation.tabs.push(res.data[i].categoryName)
-                    this.navigation.routes.push({
-                        name: `${res.data[i].categoryKey}`,
-                        params: {
-                            categoryId: res.data[i].categoryId
-                        }
-                    })
+                    this.navigation.routes.push(`/contact/${res.data[i].categoryKey}/${res.data[i].categoryId}`)
                 }
                 this.selected(0)
             }
         },
         mounted() {
             this.queryKey()
+        },
+        activated() {
+            this.selected(0)
         }
     }
 </script>

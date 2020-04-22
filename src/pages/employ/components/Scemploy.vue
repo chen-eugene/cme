@@ -45,12 +45,7 @@
                 this.news = res.data.row;
             },
             gotoDetail(article) {
-                this.$router.push({
-                    name: `EmployDetail`,
-                    params: {
-                        articleId: article.articleId
-                    }
-                })
+                this.$router.push(`/detail/${article.articleId}`);
             },
             currentChange(pageNum) {
                 this.queryNews(pageNum)
