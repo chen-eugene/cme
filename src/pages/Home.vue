@@ -21,7 +21,7 @@
                     <div class="txt more" @click="gotoTarget('company')">了解更多 →</div>
                 </div>
                 <div class="video-container">
-                    <video controls width="450px" autoplay>
+                    <video controls width="450px" autoplay muted>
                         <source src="http://zeuskx-mina-prod.oss-cn-beijing.aliyuncs.com/cme/vedio/deliver.mp4"
                                 type="video/mp4">
                     </video>
