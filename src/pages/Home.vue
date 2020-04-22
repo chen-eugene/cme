@@ -21,8 +21,8 @@
                     <div class="txt more" @click="gotoTarget('company')">了解更多 →</div>
                 </div>
                 <div class="video-container">
-                    <video controls width="450px">
-                        <source src="../assets/deliver.mp4"
+                    <video controls width="450px" autoplay>
+                        <source src="http://zeuskx-mina-prod.oss-cn-beijing.aliyuncs.com/cme/vedio/deliver.mp4"
                                 type="video/mp4">
                     </video>
                 </div>
@@ -139,7 +139,6 @@
             width: 100%;
             background: #504E4E;
             position: relative;
-            /*text-align: center;*/
 
             .wrapper {
                 display: inline-block;
@@ -150,8 +149,9 @@
                 transform: translate(-50%, -50%);
 
                 .menu {
-                    display: inline-block;
                     width: 265px;
+                    display: table-cell;
+                    vertical-align: middle;
 
                     .txt {
                         color: white;
@@ -197,9 +197,9 @@
                 }
 
                 .video-container {
-                    display: inline-block;
-                    margin-left: 60px;
-                    background: #083C70;
+                    padding-left: 60px;
+                    display: table-cell;
+                    vertical-align: middle;
                 }
             }
         }
