@@ -9,7 +9,7 @@
         <ms-pagination
                 class="pagination"
                 :btn-text="btnTextOption"
-                :page-count="total"
+                :total-page="total"
                 :page-size="pageSize"
                 @current-change="currentChange"></ms-pagination>
     </div>
@@ -24,7 +24,7 @@
             return {
                 pageSize: 15,
                 pageNum: 1,
-                total: 0,
+                total: 1,
                 infos: [],
                 btnTextOption: {
                     first: '首页',

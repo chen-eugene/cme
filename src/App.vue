@@ -32,6 +32,7 @@
         color: #2c3e50;
         min-height: 100vh;
         background-color: #F5F5F5;
+        min-width: 1190px;
 
         > .content {
             width: 100%;

@@ -1,5 +1,6 @@
 <template>
     <div id="introduction">
+        <a class="more" href="http://zeuskx-mina-prod.oss-cn-beijing.aliyuncs.com/cme/vedio/%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.pdf">了解更多 ></a>
         <div class="text">
             <h3>重庆机电智能制造有限公司简介</h3>
             <p>
@@ -33,6 +34,20 @@
     #introduction {
         height: 600px;
         width: 100%;
+        position: relative;
+
+        .more {
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: #1575be;
+            text-decoration: none;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
 
         img {
             width: 400px;

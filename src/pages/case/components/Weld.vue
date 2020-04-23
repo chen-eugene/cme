@@ -24,7 +24,7 @@
             return {
                 pageSize: 15,
                 pageNum: 1,
-                total: 0,
+                total: 1,
                 infos: [],
                 btnTextOption: {
                     first: '首页',

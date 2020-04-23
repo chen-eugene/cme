@@ -115,6 +115,7 @@
             height: 680px;
             background-size: cover;
             background-image: url("../assets/background.png");
+            background-position: center center;
 
             .bg {
                 width: 100%;
@@ -152,6 +153,7 @@
                     width: 265px;
                     display: table-cell;
                     vertical-align: middle;
+                    min-width: 265px;
 
                     .txt {
                         color: white;
