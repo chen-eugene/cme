@@ -1,7 +1,7 @@
 <template>
-    <div id="soemploy">
+    <div id="employ-list">
         <div class="content">
-            <div v-for="item in news" :key="item.articleId" class="item" @click="gotoDetail(item)">
+            <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
                 <div class="title">
                     {{item.articleName}}
                 </div>
@@ -23,13 +23,13 @@
     import axios from '../../../assets/axios'
 
     export default {
-        name: "Soemploy",
+        name: "EmployList",
         data() {
             return {
                 pageSize: 15,
                 pageNum: 1,
                 total: 1,
-                news: [],
+                infos: [],
                 btnTextOption: {
                     first: '首页',
                     last: '尾页',
@@ -38,11 +38,17 @@
                 }
             }
         },
+        props: {
+            categoryId: {
+                type: Number,
+                default: 0
+            }
+        },
         methods: {
             async queryNews(num) {
-                const res = await axios.get(`api/article/list?subCategoryId=${this.$route.params.categoryId}&pageSize=15&pageNum=${num}`)
+                const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
                 this.total = res.data.total;
-                this.news = res.data.row;
+                this.infos = res.data.row;
             },
             gotoDetail(article) {
                 this.$router.push(`/detail/${article.articleId}`);
@@ -51,14 +57,16 @@
                 this.queryNews(pageNum)
             }
         },
-        mounted() {
-            this.queryNews(this.pageNum)
+        watch: {
+            categoryId() {
+                this.queryNews(this.pageNum)
+            }
         }
     }
 </script>
 
 <style scoped lang="less">
-    #soemploy {
+    #employ-list {
         text-align: center;
 
         .content {

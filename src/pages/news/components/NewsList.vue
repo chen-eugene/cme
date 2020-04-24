@@ -1,15 +1,18 @@
 <template>
-    <div id="auto">
-        <div class="content">
-            <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
-                <img class="coverImage" :src="item.coverImage" alt=""/>
-                <div class="name">{{item.articleName}}</div>
+    <div id="news-list">
+        <div v-for="item in news" :key="item.articleId" class="item" @click="gotoDetail(item)">
+            <div class="title">
+                {{item.articleName}}
+            </div>
+            <div class="time">
+                {{item.publishTime}}
             </div>
         </div>
+
         <ms-pagination
                 class="pagination"
                 :btn-text="btnTextOption"
-                :total-page="total"
+                :page-count="total"
                 :page-size="pageSize"
                 @current-change="currentChange"></ms-pagination>
     </div>
@@ -19,13 +22,13 @@
     import axios from '../../../assets/axios'
 
     export default {
-        name: "auto",
+        name: "NewsList",
         data() {
             return {
                 pageSize: 15,
                 pageNum: 1,
                 total: 1,
-                infos: [],
+                news: [],
                 btnTextOption: {
                     first: '首页',
                     last: '尾页',
@@ -34,11 +37,17 @@
                 }
             }
         },
+        props: {
+            categoryId: {
+                type: Number,
+                default: 0
+            }
+        },
         methods: {
             async queryNews(num) {
-                const res = await axios.get(`api/article/list?subCategoryId=${this.$route.params.categoryId}&pageSize=15&pageNum=${num}`)
+                const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
                 this.total = res.data.total;
-                this.infos = res.data.row;
+                this.news = res.data.row;
             },
             gotoDetail(article) {
                 this.$router.push(`/detail/${article.articleId}`);
@@ -47,43 +56,32 @@
                 this.queryNews(pageNum)
             }
         },
-        mounted() {
-            this.queryNews(this.pageNum)
+        watch:{
+            categoryId(){
+                this.queryNews(this.pageNum)
+            }
         }
     }
 </script>
 
 <style scoped lang="less">
-    #auto {
+    #news-list {
         text-align: center;
 
-        .content {
-            width: 1026px;
-            margin: 0 auto;
+        .item {
+            margin: 10px 30px;
+            cursor: pointer;
             text-align: left;
 
-            .item {
-                margin: 20px;
-                cursor: pointer;
-                position: relative;
-                width: 300px;
-                height: 200px;
-                text-align: center;
+            div {
                 display: inline-block;
-                border: 1px solid #e7e7e7;
+                font-size: 14px;
 
-                .coverImage {
-                    width: 300px;
-                    height: 200px;
-                }
 
-                .name {
-                    position: absolute;
-                    bottom: 0;
-                    background-color: rgba(0, 0, 0, .5);
-                    width: 300px;
-                    color: white;
-                    text-align: center;
+                &.time {
+                    float: right;
+                    font-size: 10px;
+                    color: gray;
                 }
 
             }

@@ -1,8 +1,8 @@
 <template>
-    <div id="counter">
+    <div id="case-list">
         <div class="content">
             <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
-                <div class="picture" :style="{'background-image': `url(${item.coverImage})`}"></div>
+                <img class="coverImage" :src="item.coverImage" alt=""/>
                 <div class="name">{{item.articleName}}</div>
             </div>
         </div>
@@ -19,7 +19,7 @@
     import axios from '../../../assets/axios'
 
     export default {
-        name: "Counter",
+        name: "CaseList",
         data() {
             return {
                 pageSize: 15,
@@ -34,9 +34,15 @@
                 }
             }
         },
+        props: {
+            categoryId: {
+                type: Number,
+                default: 0
+            }
+        },
         methods: {
             async queryNews(num) {
-                const res = await axios.get(`api/article/list?subCategoryId=${this.$route.params.categoryId}&pageSize=15&pageNum=${num}`)
+                const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
                 this.total = res.data.total;
                 this.infos = res.data.row;
             },
@@ -47,16 +53,16 @@
                 this.queryNews(pageNum)
             }
         },
-        mounted() {
-            this.queryNews(this.pageNum)
+        watch: {
+            categoryId() {
+                this.queryNews(this.pageNum)
+            }
         }
     }
 </script>
 
 <style scoped lang="less">
-    #counter {
-        padding-bottom: 60px;
-        position: relative;
+    #case-list {
         text-align: center;
 
         .content {
@@ -65,44 +71,29 @@
             text-align: left;
 
             .item {
-                 margin: 20px;
+                margin: 20px;
                 cursor: pointer;
+                position: relative;
+                width: 300px;
+                height: 200px;
                 text-align: center;
                 display: inline-block;
-                box-sizing: content-box;
-                transition: transform .5s ease;
-                overflow: hidden;
+                border: 1px solid #e7e7e7;
 
-                &:hover {
-                    transform: translateY(-20px);
-                    
-                    .picture {
-                        border: 2px solid #1575be;
-                        background-size: 100%;
-                    }
-
-                    .name {
-                        color: #1575be;
-                    }
-                }
-
-                .picture {
+                .coverImage {
                     width: 300px;
                     height: 200px;
-                    background-size: 70%;
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                    transition: all .5s ease;
-                    overflow: hidden;
                 }
 
                 .name {
+                    position: absolute;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, .5);
                     width: 300px;
-                    color: #333333;
+                    color: white;
                     text-align: center;
-                    height: 40px;
-                    line-height: 40px;
                 }
+
             }
 
         }

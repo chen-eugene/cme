@@ -1,11 +1,6 @@
 <template>
     <div id="sub-header">
-        <img :src="header" alt=""/>
-<!--        <div class="nav">-->
-<!--            <div class="home">首页</div>-->
-<!--            <div class="primary">{{primary}}</div>-->
-<!--            <div class="secondary">{{tabs[active]}}</div>-->
-<!--        </div>-->
+        <div class="picture" :style="{'background-image': `url(${header}`}" alt=""/>
         <div class="tab-wrap">
             <div class="tabs">
                 <div class="tab"
@@ -46,8 +41,10 @@
         },
         methods: {
             switchTab(index) {
-                this.active = index;
-                this.$emit('selected', index);
+                if (this.active !== index) {
+                    this.active = index;
+                    this.$emit('selected', index);
+                }
             }
         }
     }
@@ -59,10 +56,12 @@
         width: 100%;
         background: white;
 
-        > img {
+        .picture {
             width: 100%;
             height: 450px;
-            object-fit: cover;
+            background-size: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
         .nav {

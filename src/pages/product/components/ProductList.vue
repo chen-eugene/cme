@@ -1,15 +1,15 @@
 <template>
-    <div id="express">
+    <div id="product-list">
         <div class="content">
             <div v-for="item in infos" :key="item.articleId" class="item" @click="gotoDetail(item)">
-                <img class="coverImage" :src="item.coverImage" alt=""/>
+                <div class="picture" :style="{'background-image': `url(${item.coverImage})`}"></div>
                 <div class="name">{{item.articleName}}</div>
             </div>
         </div>
         <ms-pagination
                 class="pagination"
                 :btn-text="btnTextOption"
-                :page-count="total"
+                :total-page="total"
                 :page-size="pageSize"
                 @current-change="currentChange"></ms-pagination>
     </div>
@@ -19,7 +19,7 @@
     import axios from '../../../assets/axios'
 
     export default {
-        name: "express",
+        name: "ProductList",
         data() {
             return {
                 pageSize: 15,
@@ -34,9 +34,15 @@
                 }
             }
         },
+        props: {
+            categoryId: {
+                type: Number,
+                default: 0
+            }
+        },
         methods: {
-            async queryNews(num) {
-                const res = await axios.get(`api/article/list?subCategoryId=${this.$route.params.categoryId}&pageSize=15&pageNum=${num}`)
+            async queryProduces(num) {
+                const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
                 this.total = res.data.total;
                 this.infos = res.data.row;
             },
@@ -44,17 +50,21 @@
                 this.$router.push(`/detail/${article.articleId}`);
             },
             currentChange(pageNum) {
-                this.queryNews(pageNum)
+                this.queryProduces(pageNum)
             }
         },
-        mounted() {
-            this.queryNews(this.pageNum)
+        watch: {
+            categoryId() {
+                this.queryProduces(this.pageNum)
+            }
         }
     }
 </script>
 
 <style scoped lang="less">
-    #express {
+    #product-list {
+        padding-bottom: 60px;
+        position: relative;
         text-align: center;
 
         .content {
@@ -65,28 +75,44 @@
             .item {
                 margin: 20px;
                 cursor: pointer;
-                position: relative;
-                width: 300px;
-                height: 200px;
                 text-align: center;
                 display: inline-block;
-                border: 1px solid #e7e7e7;
+                box-sizing: content-box;
+                transition: transform .5s ease;
+                overflow: hidden;
 
-                .coverImage {
+                &:hover {
+                    transform: translateY(-20px);
+
+                    .picture {
+                        border: 2px solid #1575be;
+                        background-size: 100%;
+                    }
+
+                    .name {
+                        color: #1575be;
+                    }
+                }
+
+                .picture {
                     width: 300px;
                     height: 200px;
+                    background-size: 70%;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    transition: all .5s ease;
+                    overflow: hidden;
                 }
 
                 .name {
-                    position: absolute;
-                    bottom: 0;
-                    background-color: rgba(0, 0, 0, .5);
                     width: 300px;
-                    color: white;
+                    color: #333333;
                     text-align: center;
+                    height: 40px;
+                    line-height: 40px;
                 }
-
             }
+
         }
 
         .pagination {
@@ -94,7 +120,6 @@
             margin-top: 50px;
             text-align: center;
         }
-
 
     }
 </style>

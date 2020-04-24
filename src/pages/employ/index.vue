@@ -1,11 +1,8 @@
 <template>
     <div class="employ">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="招聘中心" :header="header"></sub-header>
+        <sub-header :tabs="tabNames" @selected="selected" primary="招聘中心" :header="header"></sub-header>
         <div class="route-content">
-            <keep-alive>
-                <router-view v-if="$route.meta.keepAlive"></router-view>
-            </keep-alive>
-            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <component v-bind:is="`EmployList`" :categoryId="curTab.categoryId"></component>
         </div>
     </div>
 </template>
@@ -14,44 +11,40 @@
 <script>
     import SubHeader from '../../components/SubHeader'
     import axios from '../../assets/axios'
+    import EmployList from './components/EmployList'
 
     export default {
         name: 'Employ',
         components: {
+            EmployList,
             SubHeader
         },
         data() {
             return {
                 header: require('@/assets/header_employ.png'),
-                navigation: {
-                    tabs: [],
-                    routes: [],
-                },
+                tabNames: [],
+                tabs: [],
+                curTab: {}
             }
         },
         methods: {
             selected(index) {
-                console.log('index_backup.vue');
-                this.$router.push(this.navigation.routes[index])
-            },
-            viewDetail(index) {
-                this.$router.push(`/employ/detail/${index}`)
+                this.curTab = this.tabs[index]
             },
             async queryKey() {
                 const res = await axios.get('api/category/list?categoryKey=employ')
-                for (let i = 0; i < res.data.length; i++) {
-                    this.navigation.tabs.push(res.data[i].categoryName)
-                    this.navigation.routes.push(`/employ/${res.data[i].categoryKey}/${res.data[i].categoryId}`)
+                this.tabs = res.data;
+                if (this.tabs.length > 0) {
+                    this.curTab = this.tabs[0];
                 }
-                this.selected(0)
+                for (let i = 0; i < res.data.length; i++) {
+                    this.tabNames.push(res.data[i].categoryName);
+                }
             }
         },
         mounted() {
             this.queryKey()
         },
-        activated() {
-            this.selected(0)
-        }
     }
 </script>
 <style lang="less">

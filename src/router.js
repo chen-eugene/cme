@@ -12,26 +12,13 @@ import ContactUs from './pages/contact/component/ContactUs'
 import LeaveWord from './pages/contact/component/LeaveWord'
 
 import News from './pages/news'
-import Company from './pages/news/components/Company'
-import NewsProject from './pages/news/components/Project'
 import NewsDetail from './pages/news/detail'
 
 import Case from './pages/case/index'
-// import CaseDetail from './pages/case/detail'
-import CaseAuto from './pages/case/components/Auto'
-import CaseExpress from './pages/case/components/Express'
-import CaseInfo from './pages/case/components/Info'
-import CaseWeld from './pages/case/components/Weld'
 
 import Product from './pages/product/Product'
-// import ProductDetail from './pages/product/detail'
-import OnOff from './pages/product/components/OnOff'
-import Counter from './pages/product/components/Counter'
 
 import Employ from './pages/employ/index'
-// import EmployDetail from './pages/employ/detail'
-import EmployScemploy from './pages/employ/components/Scemploy'
-import EmploySoemploy from './pages/employ/components/Soemploy'
 
 import Introduction from './pages/introduce/component/Introduction'
 import Framework from './pages/introduce/component/Framework'
@@ -56,39 +43,11 @@ export default new Router({
             path: '/news',
             name: 'News',
             component: News,
-            children: [
-                {
-                    path: 'company/:categoryId',
-                    name: 'company',
-                    component: Company,
-                    meta: {keepAlive: true},
-                },
-                {
-                    path: 'project/:categoryId',
-                    name: 'project',
-                    component: NewsProject,
-                    meta: {keepAlive: true},
-                }
-            ]
         },
         {
             path: '/product',
             name: 'Product',
             component: Product,
-            children: [
-                {
-                    path: 'onoff/:categoryId',
-                    name: 'onoff',
-                    component: OnOff,
-                    meta: {keepAlive: true},
-                },
-                {
-                    path: 'counter/:categoryId',
-                    name: 'counter',
-                    component: Counter,
-                    meta: {keepAlive: true},
-                }
-            ]
         },
         {
             path: '/introduce',
@@ -132,49 +91,11 @@ export default new Router({
             path: '/case',
             name: 'Case',
             component: Case,
-            children: [
-                {
-                    path: 'auto/:categoryId',
-                    name: 'auto',
-                    component: CaseAuto,
-                    meta: {keepAlive: true},
-                },
-                {
-                    path: 'express/:categoryId',
-                    name: 'express',
-                    component: CaseExpress,
-                    meta: {keepAlive: true},
-                },
-                {
-                    path: 'info/:categoryId',
-                    name: 'info',
-                    component: CaseInfo,
-                    meta: {keepAlive: true},
-                },
-                {
-                    path: 'weld/:categoryId',
-                    name: 'weld',
-                    component: CaseWeld,
-                    meta: {keepAlive: true},
-                }
-            ]
         },
         {
             path: '/employ',
             name: 'Employ',
             component: Employ,
-            children: [
-                {
-                    path: 'scemploy/:categoryId',
-                    name: 'scemploy',
-                    component: EmployScemploy
-                },
-                {
-                    path: 'soemploy/:categoryId',
-                    name: 'soemploy',
-                    component: EmploySoemploy
-                }
-            ]
         },
         {
             path: '/hr',

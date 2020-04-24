@@ -1,11 +1,8 @@
 <template>
     <div id="product">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="产品服务" :header="header"></sub-header>
+        <sub-header :tabs="tabNames" @selected="selected" primary="产品服务" :header="header"></sub-header>
         <div class="route-content">
-            <keep-alive>
-                <router-view v-if="$route.meta.keepAlive"></router-view>
-            </keep-alive>
-            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <component v-bind:is="`ProductList`" :categoryId="curTab.categoryId"></component>
         </div>
     </div>
 </template>
@@ -13,44 +10,40 @@
 <script>
     import SubHeader from '../../components/SubHeader'
     import axios from '../../assets/axios'
+    import ProductList from './components/ProductList'
 
     export default {
         name: "product",
         components: {
-            SubHeader
+            SubHeader,
+            ProductList
         },
         data() {
             return {
                 header: require('@/assets/header_product.png'),
-                navigation: {
-                    tabs: [],
-                    routes: [],
-                }
+                tabNames: [],
+                tabs: [],
+                curTab: {}
             }
         },
         methods: {
             selected(index) {
-                console.log('selected');
-                this.$router.push(this.navigation.routes[index])
-            },
-            viewDetail(index) {
-                this.$router.push(`/news/detail/${index}`)
+                this.curTab = this.tabs[index]
             },
             async queryKey() {
-                const res = await axios.get('api/category/list?categoryKey=product')
-                for (let i = 0; i < res.data.length; i++) {
-                    this.navigation.tabs.push(res.data[i].categoryName)
-                    this.navigation.routes.push(`/product/${res.data[i].categoryKey}/${res.data[i].categoryId}`)
+                const res = await axios.get('api/category/list?categoryKey=product');
+                this.tabs = res.data;
+                if (this.tabs.length > 0) {
+                    this.curTab = this.tabs[0];
                 }
-                this.selected(0)
+                for (let i = 0; i < res.data.length; i++) {
+                    this.tabNames.push(res.data[i].categoryName);
+                }
             }
         },
         mounted() {
             this.queryKey()
         },
-        activated() {
-            this.selected(0)
-        }
     }
 </script>
 

@@ -1,11 +1,8 @@
 <template>
     <div class="news">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="新闻中心" :header="header"></sub-header>
+        <sub-header :tabs="tabNames" @selected="selected" primary="新闻中心" :header="header"></sub-header>
         <div class="route-content">
-            <keep-alive>
-                <router-view v-if="$route.meta.keepAlive"></router-view>
-            </keep-alive>
-            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <component v-bind:is="`NewsList`" :categoryId="curTab.categoryId"></component>
         </div>
     </div>
 </template>
@@ -14,44 +11,40 @@
 <script>
     import SubHeader from '../../components/SubHeader'
     import axios from '../../assets/axios'
+    import NewsList from './components/NewsList'
 
     export default {
         name: 'news',
         components: {
+            NewsList,
             SubHeader
         },
         data() {
             return {
                 header: require('@/assets/header_news.png'),
-                navigation: {
-                    tabs: [],
-                    routes: [],
-                },
+                tabNames: [],
+                tabs: [],
+                curTab: {}
             }
         },
         methods: {
             selected(index) {
-                console.log('index_backup.vue');
-                this.$router.push(this.navigation.routes[index])
-            },
-            viewDetail(index) {
-                this.$router.push(`/news/detail/${index}`)
+                this.curTab = this.tabs[index]
             },
             async queryKey() {
-                const res = await axios.get('api/category/list?categoryKey=news')
-                for (let i = 0; i < res.data.length; i++) {
-                    this.navigation.tabs.push(res.data[i].categoryName);
-                    this.navigation.routes.push(`/news/${res.data[i].categoryKey}/${res.data[i].categoryId}`)
+                const res = await axios.get('api/category/list?categoryKey=news');
+                this.tabs = res.data;
+                if (this.tabs.length > 0) {
+                    this.curTab = this.tabs[0];
                 }
-                this.selected(0)
+                for (let i = 0; i < res.data.length; i++) {
+                    this.tabNames.push(res.data[i].categoryName);
+                }
             }
         },
         mounted() {
             this.queryKey()
         },
-        activated() {
-            this.selected(0)
-        }
     }
 </script>
 <style lang="less">

@@ -6,7 +6,7 @@
             </div>
             <div class="menu-list clearfix">
                 <div class="menu" :class="{ 'active': index === active }" v-for="(item, index) in menuList" :key="index"
-                     @click="switchMenu(item)">
+                     @click="switchMenu(index,item)">
                     {{ item.title }}
                 </div>
             </div>
@@ -33,14 +33,6 @@
                         title: '行业解决方案',
                         route: '/case'
                     }
-                    // , {
-                    //     title: '招标信息',
-                    //     route: '/info'
-                    // }
-                    // , {
-                    //     title: '企业文化',
-                    //     route: '/culture'
-                    // }
                     , {
                         title: '招聘信息',
                         route: '/employ'
@@ -80,8 +72,10 @@
         },
 
         methods: {
-            switchMenu(item) {
-                this.$router.push(item.route)
+            switchMenu(index, item) {
+                if (this.active !== index) {
+                    this.$router.push(item.route)
+                }
             }
         }
     }
