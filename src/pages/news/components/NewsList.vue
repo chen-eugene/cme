@@ -46,7 +46,7 @@
         methods: {
             async queryNews(num) {
                 const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
-                this.total = res.data.total;
+                this.total = res.data.total || 1;
                 this.news = res.data.row;
             },
             gotoDetail(article) {
@@ -72,6 +72,10 @@
             margin: 10px 30px;
             cursor: pointer;
             text-align: left;
+
+            &:hover {
+                color: #1575be;
+            }
 
             div {
                 display: inline-block;

@@ -60,6 +60,7 @@
 
         .content {
             margin-top: 50px;
+            text-align: left;
 
             img {
                 max-width: 900px;

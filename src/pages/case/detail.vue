@@ -21,13 +21,15 @@
                 news: {}
             }
         },
+
         methods: {
             async queryDetail() {
                 const res = await axios.get(`api/article/detail?articleId=${this.$route.params.articleId}`);
                 this.news = res.data
             },
         },
-        mounted() {
+
+        activated () {
             this.queryDetail()
         }
     }
@@ -60,7 +62,27 @@
 
         .content {
             margin-top: 50px;
-        }
+            text-align: left;
 
+            p {
+                line-height: 1.4em;
+                text-indent: 2em;
+                
+                & + p {
+                    margin-top: 15px;
+                }
+            }
+
+            table {
+                width: 100%;
+                margin: 15px 0px;
+                vertical-align: middle;
+
+                td {
+                    vertical-align: middle;
+                    border: 1px solid #AAAAAA;
+                }
+            }
+        }
     }
 </style>

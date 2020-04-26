@@ -43,7 +43,7 @@
         methods: {
             async queryProduces(num) {
                 const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
-                this.total = res.data.total;
+                this.total = res.data.total || 1;
                 this.infos = res.data.row;
             },
             gotoDetail(article) {
