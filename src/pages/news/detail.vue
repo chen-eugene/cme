@@ -4,7 +4,7 @@
             <div class="title">{{news.articleName}}</div>
             <div class="label">
                 <span class="visit-count">访问数：{{news.visits}}</span>
-                <span class="publish-time">发布时间：{{news.publishTime}}</span>
+                <span class="publish-time">发布时间：{{news.publishTime | date}}</span>
             </div>
             <div class="content" v-html="news.content"></div>
         </div>
@@ -36,10 +36,13 @@
 </script>
 <style lang="less">
     .news-detail {
-        margin: 30px 80px;
+        width: 1190px;
+        min-width: 1190px;
+        margin: 30px auto;
         padding: 30px 50px;
         text-align: center;
         background-color: #FFFFFF;
+        box-sizing: border-box;
 
         .title {
             text-align: center;

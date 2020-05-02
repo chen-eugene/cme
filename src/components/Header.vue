@@ -27,7 +27,7 @@
                         title: '新闻中心',
                         route: '/news'
                     }, {
-                        title: '产品服务',
+                        title: '产品中心',
                         route: '/product'
                     }, {
                         title: '行业解决方案',

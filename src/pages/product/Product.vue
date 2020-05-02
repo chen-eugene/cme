@@ -1,6 +1,6 @@
 <template>
     <div id="product">
-        <sub-header :tabs="tabNames" @selected="selected" primary="产品服务" :header="header"></sub-header>
+        <sub-header :tabs="tabNames" @selected="selected" primary="产品中心" :header="header"></sub-header>
         <div class="route-content">
             <component v-bind:is="`ProductList`" :categoryId="curTab.categoryId"></component>
         </div>

@@ -95,7 +95,7 @@
                 .picture {
                     width: 300px;
                     height: 200px;
-                    background-size: 100%;
+                    background-size: cover;
                     background-position: center center;
                     background-repeat: no-repeat;
                     transition: all .5s ease;

@@ -10,13 +10,30 @@
             <div class="text">
                 智能制造 引领机电未来
             </div>
+
+            <div class="swiper-container" ref="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(item, index) in newsList" :key="index">
+                        <div class="news-date">
+                            <h3>{{ item.publishTime | date('DD') }}</h3>
+                            <h5>{{ item.publishTime | date('YYYY-MM') }}</h5>
+                        </div>
+
+                        <div class="news-title" @click="newsDetail(item)">
+                            {{ item.articleName }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
         <div class="introduce">
             <div class="wrapper">
                 <div class="menu">
-                    <div class="txt title">关于机电</div>
+                    <div class="txt title">关于机电智能制造</div>
                     <div class="txt circle company" @click="gotoTarget('company')">公司简介</div>
-                    <div class="txt circle product" @click="gotoTarget('product')">产品服务</div>
+                    <div class="txt circle product" @click="gotoTarget('product')">产品中心</div>
                     <div class="txt circle case" @click="gotoTarget('case')">行业解决方案</div>
                     <div class="txt more" @click="gotoTarget('company')">了解更多 →</div>
                 </div>
@@ -32,6 +49,7 @@
     </div>
 </template>
 <script>
+    import axios from '../assets/axios'
     export default {
         name: 'home',
 
@@ -79,9 +97,17 @@
                         }
                     ],
                     active: 0
-                }
+                },
+                newsList: [],
+                swiper: null
             }
         },
+
+        async mounted () {
+            await this.getNewsList()
+            this.createSwiper()
+        },
+
         methods: {
             switchTab(index) {
                 this.navigation.active = index
@@ -101,11 +127,32 @@
                         this.$router.push('/case');
                         break;
                 }
+            },
+            async getNewsList () {
+                const response = await axios.get('api/article/list?pageSize=5')
+                if (response.code === 200) {
+                    this.newsList = response.data.row
+                }
+            },
+
+            createSwiper () {
+                // eslint-disable-next-line no-undef
+                this.swiper = new Swiper(this.$refs['swiper'], {
+                    pagination: {
+                        el: '.swiper-pagination'
+                    },
+                    loop: true,
+                    autoplay: true
+                })
+            },
+
+            newsDetail (article) {
+                this.$router.push(`/detail/${article.articleId}`);
             }
         }
     }
 </script>
-<style lang="less" scoped>
+<style lang="less">
     .home {
         width: 100%;
 
@@ -122,9 +169,8 @@
             }
 
             .text {
-                width: 400px;
                 height: 60px;
-                font-size: 30px;
+                font-size: 48px;
                 color: white;
                 font-weight: 600;
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -132,6 +178,93 @@
                 position: absolute;
                 top: calc(50% - 30px);
                 left: calc(50% - 200px);
+            }
+
+            .swiper-container {
+                width: 100%;
+                max-width: 373px;
+                min-width: 0px;
+                height: auto;
+                max-height: 135px;
+                min-height: 135px;
+                margin-top: 0px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 0px;
+                padding-top: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-bottom: 0px;
+                position: absolute;
+                top: auto;
+                left: 50px;
+                z-index: 2;
+                bottom: 50px;
+                right: auto;
+                border: 1px solid rgba(255,255,255,0.6);
+
+                .swiper-wrapper {
+                    box-sizing: border-box;
+
+                    .swiper-slide {
+                        padding: 25px 20px;
+                        box-sizing: border-box;
+                    }
+                }
+
+                .news-date {
+                    margin: 0;
+                    padding: 0 5px 0 0;
+                    vertical-align: middle;
+                    text-align: left;
+                    white-space: nowrap;
+                    overflow: visible;
+                    line-height: 18px;
+                    vertical-align: top;
+                    float: left;
+
+                    h3, h5 {
+                        margin: 0;
+                    }
+
+                    h3 {
+                        font-size: 60px;
+                        font-family: Anton;
+                        line-height: 60px;
+                        color: #fff;
+                    }
+
+                    h5 {
+                        color: #fff;
+                        font-size: 12px;
+                        font-family: Arial;
+                    }
+                }
+
+                .news-title {
+                    width: auto;
+                    height: auto;
+                    padding: 5px 0;
+                    overflow: hidden;
+                    width: calc(100% - 110px);
+                    padding: 0px;
+                    line-height: 20px;
+                    font-size: 14px;
+                    color: #fff;
+                    text-align: left;
+                    display: block;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    cursor: pointer;
+                }
+
+                .swiper-pagination-bullet {
+                    background: rgba(255,255,255,0.8)!important;
+                }
+
+                .swiper-pagination-bullet-active {
+                    background: #FFFFFF!important;
+                }
             }
         }
 
@@ -176,6 +309,7 @@
 
                         &:hover {
                             cursor: pointer;
+                            background-color: #1575be;
                         }
 
                         &.product {
@@ -194,6 +328,7 @@
 
                         &:hover {
                             cursor: pointer;
+                            color: #1575be;
                         }
                     }
                 }

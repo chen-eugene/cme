@@ -1,6 +1,6 @@
 <template>
     <div id="product">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="产品服务" :header="header"></sub-header>
+        <sub-header :tabs="navigation.tabs" @selected="selected" primary="产品中心" :header="header"></sub-header>
         <div class="route-content">
             <keep-alive>
                 <router-view v-if="$route.meta.keepAlive"></router-view>

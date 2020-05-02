@@ -5,7 +5,7 @@
                 {{item.articleName}}
             </div>
             <div class="time">
-                {{item.publishTime}}
+                {{item.publishTime | date}}
             </div>
         </div>
 

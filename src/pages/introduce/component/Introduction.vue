@@ -14,18 +14,13 @@
                 公司业务已覆盖智能制造项目咨询与管理、智能工厂整体规划与实施、智能制造项目系统集成与服务、智能装备及产品研发与生产、智能化管理系统开发与运维等，并成功实施多个国家智能制造示范项目，成为西部地区智能制造领域优选供应商。
             </p>
         </div>
-        <img :src="logo" alt=""/>
+        <img src="../../../assets/introduce.png" alt=""/>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Introduction",
-        data() {
-            return {
-                logo: require('../../../../public/ic_logo.png')
-            }
-        }
+        name: "Introduction"
     }
 </script>
 
@@ -54,7 +49,7 @@
             /*height: 500px;*/
             float: right;
             margin-right: 100px;
-            margin-top: 150px;
+            margin-top: 80px;
         }
 
         .text {
