@@ -34,11 +34,11 @@
                     <div class="txt title">关于机电智能制造</div>
                     <div class="txt circle company" @click="gotoTarget('company')">公司简介</div>
                     <div class="txt circle product" @click="gotoTarget('product')">产品中心</div>
-                    <div class="txt circle case" @click="gotoTarget('case')">行业解决方案</div>
+                    <div class="txt circle case" @click="gotoTarget('case')">智能制造应用</div>
                     <div class="txt more" @click="gotoTarget('company')">了解更多 →</div>
                 </div>
                 <div class="video-container">
-                    <video controls width="450px" autoplay muted>
+                    <video controls width="640px" autoplay muted>
                         <source src="http://zeuskx-mina-prod.oss-cn-beijing.aliyuncs.com/cme/vedio/deliver.mp4"
                                 type="video/mp4">
                     </video>
@@ -293,7 +293,7 @@
                         font-size: 16px;
 
                         &.title {
-                            font-size: 20px;
+                            font-size: 25px;
                             margin-bottom: 30px;
                         }
                     }
@@ -334,7 +334,7 @@
                 }
 
                 .video-container {
-                    padding-left: 60px;
+                    padding-left: 30px;
                     display: table-cell;
                     vertical-align: middle;
                 }

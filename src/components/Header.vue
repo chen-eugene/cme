@@ -30,7 +30,7 @@
                         title: '产品中心',
                         route: '/product'
                     }, {
-                        title: '行业解决方案',
+                        title: '智能制造应用',
                         route: '/case'
                     }
                     , {
@@ -112,7 +112,7 @@
                 height: 80px;
 
                 .menu {
-                    width: 110px;
+                    width: 130px;
                     height: 80px;
                     float: left;
                     padding: 0 10px;
@@ -147,7 +147,7 @@
                         bottom: 0;
                         left: 0;
                         right: 0;
-                        width: 110px;
+                        width: 130px;
                         height: 4px;
                     }
                 }
