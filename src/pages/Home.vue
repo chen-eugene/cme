@@ -38,10 +38,12 @@
                     <div class="txt more" @click="gotoTarget('company')">了解更多 →</div>
                 </div>
                 <div class="video-container">
-                    <video controls width="640px" autoplay muted>
-                        <source src="http://zeuskx-mina-prod.oss-cn-beijing.aliyuncs.com/cme/vedio/deliver.mp4"
-                                type="video/mp4">
-                    </video>
+                    <custom-video class="custom-video"
+                            source="http://zeuskx-mina-prod.oss-cn-beijing.aliyuncs.com/cme/vedio/deliver.mp4"></custom-video>
+                    <!--                    <video controls width="640px" autoplay muted ref="video">-->
+                    <!--                        <source src="http://zeuskx-mina-prod.oss-cn-beijing.aliyuncs.com/cme/vedio/deliver.mp4"-->
+                    <!--                                type="video/mp4">-->
+                    <!--                    </video>-->
                 </div>
             </div>
         </div>
@@ -50,9 +52,13 @@
 </template>
 <script>
     import axios from '../assets/axios'
+    import CustomVideo from '../components/CustomVideo'
+
     export default {
         name: 'home',
-
+        components: {
+            CustomVideo
+        },
         data() {
             return {
                 // backgroundUrl: require('../assets/background.png'),
@@ -103,7 +109,7 @@
             }
         },
 
-        async mounted () {
+        async mounted() {
             await this.getNewsList()
             this.createSwiper()
         },
@@ -128,14 +134,14 @@
                         break;
                 }
             },
-            async getNewsList () {
+            async getNewsList() {
                 const response = await axios.get('api/article/list?pageSize=5')
                 if (response.code === 200) {
                     this.newsList = response.data.row
                 }
             },
 
-            createSwiper () {
+            createSwiper() {
                 // eslint-disable-next-line no-undef
                 this.swiper = new Swiper(this.$refs['swiper'], {
                     pagination: {
@@ -146,7 +152,7 @@
                 })
             },
 
-            newsDetail (article) {
+            newsDetail(article) {
                 this.$router.push(`/detail/${article.articleId}`);
             }
         }
@@ -201,7 +207,7 @@
                 z-index: 2;
                 bottom: 50px;
                 right: auto;
-                border: 1px solid rgba(255,255,255,0.6);
+                border: 1px solid rgba(255, 255, 255, 0.6);
 
                 .swiper-wrapper {
                     box-sizing: border-box;
@@ -259,11 +265,11 @@
                 }
 
                 .swiper-pagination-bullet {
-                    background: rgba(255,255,255,0.8)!important;
+                    background: rgba(255, 255, 255, 0.8) !important;
                 }
 
                 .swiper-pagination-bullet-active {
-                    background: #FFFFFF!important;
+                    background: #FFFFFF !important;
                 }
             }
         }
@@ -337,6 +343,12 @@
                     padding-left: 30px;
                     display: table-cell;
                     vertical-align: middle;
+
+
+                    .custom-video {
+                        width: 640px;
+                    }
+
                 }
             }
         }
