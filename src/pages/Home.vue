@@ -8,7 +8,7 @@
         <!--        </swiper>-->
         <div class="slogon">
             <div class="text">
-                智能制造 引领机电未来
+                智能制造  引领未来
             </div>
 
             <div class="swiper-container" ref="swiper">
