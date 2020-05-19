@@ -10,6 +10,7 @@
                 <div class="anchor" @click="gotoTarget(5)">招聘信息</div>
             </div>
             <div class="company">Copyright © 重庆机电智能制造有限公司 ALL Rights Reserved.</div>
+            <div class="icp"><a href="http://beian.miit.gov.cn/" style="color: #FFFFFF">渝ICP备19014366号-1</a></div>
         </div>
         <div class="center container">
             <div class="menu">
