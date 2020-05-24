@@ -47,7 +47,7 @@
         methods: {
             async queryNews(num) {
                 const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
-                this.total = res.data.total;
+                this.total = Math.ceil(res.data.total / this.pageSize);
                 this.infos = res.data.row;
             },
             gotoDetail(article) {

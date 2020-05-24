@@ -1,6 +1,6 @@
 <template>
     <div id="product">
-        <sub-header :tabs="navigation.tabs" @selected="selected" primary="产品中心" :header="header"></sub-header>
+        <sub-header :tabs="navigation.tabs" @selected="selected" primary="产品中心" :header="header" ref="header"></sub-header>
         <div class="route-content">
             <keep-alive>
                 <router-view v-if="$route.meta.keepAlive"></router-view>
@@ -30,7 +30,6 @@
         },
         methods: {
             selected(index) {
-                console.log('selected');
                 this.$router.push(this.navigation.routes[index])
             },
             viewDetail(index) {
@@ -45,11 +44,17 @@
                 this.selected(0)
             }
         },
+
         mounted() {
             this.queryKey()
         },
+
         activated() {
-            this.selected(0)
+            if (this.$route.path.includes('/contactus')) {
+                this.$refs['header'].active = 1
+            } else {
+                this.$refs['header'].active = 0
+            }
         }
     }
 </script>

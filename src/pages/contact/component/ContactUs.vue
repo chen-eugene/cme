@@ -1,145 +1,56 @@
 <template>
     <div class="contactus">
+        <h3 class="title">重庆机电智能制造</h3>
 
+        <div class="item address">地址(Add)：重庆市南岸区江溪路6号</div>
+
+        <div class="item phone">电话（Tel）:</div>
+
+        <div class="item phone">
+            <a href="tel: 023-62770078">+86-(0)23-62770078市场部；</a>
+        </div>
+
+        <div class="item phone">
+            <a href="tel: 023-62770132">+86-(0)23-62770132综合部；</a>
+        </div>
     </div>
 </template>
 <script>
-    // import toast from '../../components/niu-toast/index'
-
     export default {
         name: 'contact',
         data() {
             return {
-                info: {
-                    name: '',
-                    tel: '',
-                    title: '',
-                    content: ''
-                }
             }
         },
         methods: {
-            validate() {
-                if (this.info.name === '') {
-                    alert('姓名不能为空');
-                    return false
-                } else if (this.info.tel === '') {
-                    alert("姓名不能为空");
-                    return false
-                } else if (this.info.title === '') {
-                    alert("姓名不能为空");
-                    return false
-                } else if (this.info.content === '') {
-                    alert("姓名不能为空");
-                    return false
-                }
-                return true
-            },
-            confirm() {
-                if (this.validate()) {
-                    console.log('')
-                }
-            },
-            reset() {
-                this.info = this.$options.data().info
-            }
         },
 
     }
 </script>
 <style lang="less">
     .contactus {
-        padding: 50px;
         width: 100%;
-        margin: 50px auto;
         background: #FFFFFF;
 
+        .title {
+            font-size: 20px;
+            color: #0081bc;
+            font-weight: bold;
+        }
+
         .item {
-            img {
-                width: 25px;
-                height: 25px;
-                vertical-align: middle;
-            }
+            font-size: 16px;
+            line-height: 2em;
+            margin: 15px 0;
 
-            .input {
-                vertical-align: middle;
-                height: 34px;
-                font-size: 14px;
-                padding: 6px 12px;
-                color: #333333;
-                background-color: #FFFFFF;
-                background-image: none;
-                border-radius: 4px;
-                margin-left: 15px;
-                border: 1px solid #CCCCCC;
-            }
-
-            &.name, &.tel {
-                display: inline-block;
-
-                .input {
-                    width: 320px;
-                }
-
-                &.tel {
-                    float: right;
-                }
-
-            }
-
-            &.tag {
-                margin-top: 30px;
-
-                .input {
-                    width: calc(100% - 40px);
+            a {
+                color: unset;
+                text-decoration: none;
+                
+                &:hover {
+                    color: #0081bc;
                 }
             }
-
-            &.msg {
-                margin-top: 30px;
-
-                img {
-                    vertical-align: top;
-                }
-
-                .input {
-                    width: calc(100% - 40px);
-                    height: 240px;
-                    resize: none;
-                }
-            }
-
         }
-
-        .footer {
-            text-align: center;
-            margin-top: 35px;
-
-            .btn {
-                width: 185px;
-                height: 58px;
-                display: inline-block;
-                border-radius: 8px;
-                line-height: 58px;
-                font-size: 16px;
-
-                &.hover {
-                    cursor: pointer;
-                }
-            }
-
-            .submit {
-                background-color: #1575be;
-                color: white;
-            }
-
-            .clear {
-                background-color: #E6E6E6;
-                margin-left: 20px;
-                color: #333333;
-            }
-
-        }
-
     }
 </style>

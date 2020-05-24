@@ -22,7 +22,7 @@
         name: "ProductList",
         data() {
             return {
-                pageSize: 15,
+                pageSize: 9,
                 pageNum: 1,
                 total: 1,
                 infos: [],
@@ -42,8 +42,8 @@
         },
         methods: {
             async queryProduces(num) {
-                const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=15&pageNum=${num}`)
-                this.total = res.data.total || 1;
+                const res = await axios.get(`api/article/list?subCategoryId=${this.categoryId}&pageSize=${this.pageSize}&pageNum=${num}`)
+                this.total = Math.ceil(res.data.total / this.pageSize) || 1;
                 this.infos = res.data.row;
             },
             gotoDetail(article) {

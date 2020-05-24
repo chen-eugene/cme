@@ -3,6 +3,7 @@
         <!--        <p class="address">地址：重庆市南岸区江溪路6号 电话：023-62770078 Email：yan.zhang@cme-im.com</p>-->
         <div class="container left">
             <div class="menu">
+                <div class="anchor" @click="gotoTarget(0)">网站首页</div>
                 <div class="anchor" @click="gotoTarget(1)">企业介绍</div>
                 <div class="anchor" @click="gotoTarget(2)">新闻中心</div>
                 <div class="anchor" @click="gotoTarget(3)">产品中心</div>
@@ -16,8 +17,12 @@
             <div class="menu">
                 <div class="anchor" @click="gotoTarget(6)">联系方式</div>
             </div>
-            <div class="phone">电话：023-62770078</div>
-            <div class="address">地址：重庆市南岸区江溪路6号</div>
+            <div class="contact">
+                <div class="address">地址(Add)：重庆市南岸区江溪路6号</div>
+                <div class="phone">电话(Tel)：</div>
+                <div class="phone"><a href="tel:023-62770078">+86-(0)23-62770078市场部</a></div>
+                <div class="phone"><a href="tel:023-62770132">+86-(0)23-62770132综合部</a></div>
+            </div>
         </div>
         <div class="right container">
             <img class="qrcode" src="../assets/qrcode.jpg" alt="">
@@ -50,8 +55,10 @@
                         this.$router.push("/employ");
                         break;
                     case 6:
-                        this.$router.push("/contact");
+                        this.$router.push("/contact/contactus/27");
                         break
+                    default:
+                        this.$router.push("/")
                 }
             }
         }
@@ -96,8 +103,27 @@
             &.center {
                 margin-left: 30px;
 
-                .phone {
-                    margin-top: 20px;
+                .contact {
+                    div {
+                        text-align: left!important;
+                    }
+
+                    .address {
+                        margin-top: 30px;
+                    }
+
+                    .phone {
+                        margin-top: 5px;
+
+                        a {
+                            color: unset;
+                            text-decoration: none;
+                            
+                            &:hover {
+                                color: #0081bc;
+                            }
+                        }
+                    }
                 }
             }
 
