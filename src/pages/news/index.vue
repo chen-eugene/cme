@@ -21,7 +21,7 @@
         },
         data() {
             return {
-                header: require('@/assets/header_news.png'),
+                header: require('@/assets/header_news.jpg'),
                 tabNames: [],
                 tabs: [],
                 curTab: {}

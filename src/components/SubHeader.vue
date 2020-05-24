@@ -34,7 +34,7 @@
             header: {
                 type: String,
                 default: function () {
-                    return require('@/assets/header_introduce.png')
+                    return require('@/assets/header_introduce.jpg')
                 }
             },
             primary: String

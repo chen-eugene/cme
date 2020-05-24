@@ -15,10 +15,9 @@ import News from './pages/news'
 import NewsDetail from './pages/news/detail'
 
 import Case from './pages/case/index'
-
 import Product from './pages/product/Product'
-
 import Employ from './pages/employ/index'
+import Culture from './pages/culture/index'
 
 import Introduction from './pages/introduce/component/Introduction'
 import Framework from './pages/introduce/component/Framework'
@@ -118,6 +117,11 @@ export default new Router({
                     component: LeaveWord
                 },
             ]
+        },
+        {
+            path: '/culture',
+            name: Culture,
+            component: Culture
         },
         {
             path: '/detail/:articleId',

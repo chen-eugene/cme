@@ -167,7 +167,7 @@
             width: 100%;
             height: 680px;
             background-size: cover;
-            background-image: url("../assets/background.png");
+            background-image: url("../assets/background.jpg");
             background-position: center center;
 
             .bg {

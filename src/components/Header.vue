@@ -41,6 +41,10 @@
                         title: '联系方式',
                         route: '/contact'
                     }
+                    , {
+                        title: '企业文化',
+                        route: '/culture'
+                    }
                 ],
                 active: -1,
                 logo: require('../../public/ic_logo.png')

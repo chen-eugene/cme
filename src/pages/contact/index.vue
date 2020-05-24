@@ -21,7 +21,7 @@
         },
         data() {
             return {
-                header: require('@/assets/header_contact.png'),
+                header: require('@/assets/header_contact.jpg'),
                 navigation: {
                     tabs: [],
                     routes: [],
