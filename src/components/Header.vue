@@ -24,6 +24,9 @@
                         title: '企业介绍',
                         route: '/introduce'
                     }, {
+                        title: '企业文化',
+                        route: '/culture'
+                    }, {
                         title: '新闻中心',
                         route: '/news'
                     }, {
@@ -40,10 +43,6 @@
                     , {
                         title: '联系方式',
                         route: '/contact'
-                    }
-                    , {
-                        title: '企业文化',
-                        route: '/culture'
                     }
                 ],
                 active: -1,
