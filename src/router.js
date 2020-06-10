@@ -8,8 +8,6 @@ import Introduce from './pages/introduce/Introduce'
 import Group from './pages/group'
 
 import Contact from './pages/contact/index'
-import ContactUs from './pages/contact/component/ContactUs'
-import LeaveWord from './pages/contact/component/LeaveWord'
 
 import News from './pages/news'
 import NewsDetail from './pages/news/detail'
@@ -105,18 +103,6 @@ export default new Router({
             path: '/contact',
             name: 'Contact',
             component: Contact,
-            children: [
-                {
-                    path: 'contactus/:categoryId',
-                    name: 'contactus',
-                    component: ContactUs
-                },
-                {
-                    path: 'leaveword/:categoryId',
-                    name: 'leaveword',
-                    component: LeaveWord
-                },
-            ]
         },
         {
             path: '/culture',
