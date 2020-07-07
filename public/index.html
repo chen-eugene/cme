@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">    
     <script src="https://unpkg.com/swiper/js/swiper.js"> </script>  
     <script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+    <script>
+      const isMobile = /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)
+      if (!isMobile) {
+        window.location.href = "http://www.cme-im.com"
+      }
+    </script>
   </head>
   <body>
     <noscript>
